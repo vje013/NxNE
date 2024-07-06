@@ -80,7 +80,7 @@ pyquery==2.0.0
 python-dateutil==2.9.0.post0
 pytz==2024.1
 PyYAML==6.0.1
-requests==3.0.0
+requests==2.32.1
 requests-html
 rich==13.7.1
 rsa==4.7.2
