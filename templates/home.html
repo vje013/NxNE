@@ -7,18 +7,33 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <header>
-        <h1>NxNE</h1>
-        <p>Welcome to NxNE<br>We Empower Founders</p>
-        <nav>
-            <ul>
-                <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
-                <li><a href="{{ url_for('tagline_generator') }}">Tagline Generator</a></li>
-                <li><a href="{{ url_for('brainstorm') }}">Brainstorm</a></li>
-                <li><a href="{{ url_for('script_generator') }}">Script Generator</a></li>
-                <li><a href="{{ url_for('logout') }}">Logout</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div id="wrapper">
+        <header id="header">
+            <h1>NxNE</h1>
+            <p>Welcome to NxNE<br>We Empower Founders</p>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ url_for('tagline_generator') }}">Tagline Generator</a></li>
+                    <li><a href="{{ url_for('brainstorm') }}">Brainstorm</a></li>
+                    <li><a href="{{ url_for('script_generator') }}">Script Generator</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <h2>Dashboard</h2>
+            <p>Your personal dashboard.</p>
+            <h2>Tagline Generator</h2>
+            <p>Create compelling taglines for your business.</p>
+            <h2>Brainstorm</h2>
+            <p>Generate creative ideas and solutions.</p>
+            <h2>Script Generator</h2>
+            <p>Create scripts for your marketing videos.</p>
+        </main>
+        <footer>
+            <p>&copy; NxNE. All rights reserved.</p>
+        </footer>
+    </div>
 </body>
 </html>
