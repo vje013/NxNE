@@ -80,7 +80,7 @@ pyquery==2.0.0
 python-dateutil==2.9.0.post0
 pytz==2024.1
 PyYAML==6.0.1
-requests
+requests==3.0.0
 requests-html
 rich==13.7.1
 rsa==4.7.2
@@ -113,9 +113,6 @@ webencodings==0.5.1
 websockets==10.4
 Werkzeug==3.0.3
 wrapt==1.16.0
-yahoo==0.1
-yahoo-fin==0.8.9.1
 yarl==1.9.4
-yfinance==0.2.40
 zipp==3.19.2
 zope.interface==6.4.post2
