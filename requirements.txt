@@ -22,7 +22,7 @@ cssselect==1.2.0
 cymem==2.0.8
 DateTime==5.5
 distro==1.9.0
-docutils==0.15
+docutils==0.16
 en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl#sha256=86cc141f63942d4b2c5fcee06630fd6f904788d2f0ab005cce45aadb8fb73889
 exceptiongroup==1.2.1
 fake-useragent==1.5.1
@@ -75,12 +75,12 @@ pyppeteer==2.0.0
 pyquery==2.0.0
 python-dateutil==2.9.0.post0
 pytz==2024.1
-PyYAML==3.10
+PyYAML==6.0.1
 requests==2.32.1
 requests-html
 rich==13.7.1
 rsa==4.7.2
-s3transfer==0.5.0
+s3transfer==0.10.2
 semantic-version==2.8.5
 sgmllib3k==1.0.0
 shellingham==1.5.4
