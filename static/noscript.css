@@ -1,37 +1,61 @@
-/*
-	Dimension by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
+/* noscript.css */
 
-/* BG */
+body {
+    background: #f4f4f4;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+}
 
-	body.is-preload #bg:before {
-		background-color: transparent;
-	}
+#wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-/* Header */
+header#header {
+    text-align: center;
+    margin-bottom: 40px;
+}
 
-	body.is-preload #header {
-		-moz-filter: none;
-		-webkit-filter: none;
-		-ms-filter: none;
-		filter: none;
-	}
+header#header .logo {
+    font-size: 50px;
+    color: #2c3e50;
+}
 
-		body.is-preload #header > * {
-			opacity: 1;
-		}
+header#header .content .inner h1 {
+    margin: 0;
+    font-size: 2.5em;
+    color: #2c3e50;
+}
 
-		body.is-preload #header .content .inner {
-			max-height: none;
-			padding: 3rem 2rem;
-			opacity: 1;
-		}
+header#header .content .inner p {
+    margin: 10px 0 0;
+    font-size: 1.2em;
+    color: #7f8c8d;
+}
 
-/* Main */
+header#header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+    display: flex;
+    justify-content: center;
+}
 
-	#main article {
-		opacity: 1;
-		margin: 4rem 0 0 0;
-	}
+header#header nav ul li {
+    margin: 0 10px;
+}
+
+header#header nav ul li a {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+}
+
+footer#footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #7f8c8d;
+}
