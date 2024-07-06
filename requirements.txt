@@ -29,6 +29,8 @@ fake-useragent==1.5.1
 feedparser==6.0.11
 finance==0.2502
 Flask==3.0.3
+Flask-SQLAlchemy
+Flask-Login
 frozendict==2.4.4
 frozenlist==1.4.1
 gunicorn==22.0.0
