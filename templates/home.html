@@ -1,84 +1,24 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>NxNE - Home</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
-    <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" /></noscript>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NxNE Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body class="is-preload">
-    <!-- Wrapper -->
-    <div id="wrapper">
-
-        <!-- Header -->
-        <header id="header">
-            <div class="logo">
-                <span class="icon fa-pencil-alt"></span>
-            </div>
-            <div class="content">
-                <div class="inner">
-                    <h1>NxNE</h1>
-                    <p>Welcome to NxNE</p>
-                    <p>We Empower Founders</p>
-                </div>
-            </div>
-            <nav>
-                <ul>
-                    {% if current_user.is_authenticated %}
-                        <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
-                        <li><a href="{{ url_for('tagline_generator') }}">Tagline Generator</a></li>
-                        <li><a href="{{ url_for('brainstorm') }}">Brainstorm</a></li>
-                        <li><a href="{{ url_for('script_generator') }}">Script Generator</a></li>
-                        <li><a href="{{ url_for('logout') }}">Logout</a></li>
-                    {% else %}
-                        <li><a href="{{ url_for('login') }}">Login</a></li>
-                        <li><a href="{{ url_for('register') }}">Register</a></li>
-                    {% endif %}
-                </ul>
-            </nav>
-        </header>
-
-        <!-- Main -->
-        <div id="main">
-            <section>
-                <a href="{{ url_for('dashboard') }}" class="image"><img src="{{ url_for('static', filename='css/images/AutoLady.png') }}" alt="Dashboard"></a>
-                <h2>Dashboard</h2>
-                <p>Your personal dashboard.</p>
-            </section>
-            <section>
-                <a href="{{ url_for('tagline_generator') }}" class="image"><img src="{{ url_for('static', filename='css/images/GreenLady.png') }}" alt="Tagline Generator"></a>
-                <h2>Tagline Generator</h2>
-                <p>Create compelling taglines for your business.</p>
-            </section>
-            <section>
-                <a href="{{ url_for('brainstorm') }}" class="image"><img src="{{ url_for('static', filename='css/images/Manhattan.jpeg') }}" alt="Brainstorm"></a>
-                <h2>Brainstorm</h2>
-                <p>Generate ideas and solutions.</p>
-            </section>
-            <section>
-                <a href="{{ url_for('script_generator') }}" class="image"><img src="{{ url_for('static', filename='css/images/Symphony.png') }}" alt="Script Generator"></a>
-                <h2>Script Generator</h2>
-                <p>Create professional scripts for your projects.</p>
-            </section>
-        </div>
-
-        <!-- Footer -->
-        <footer id="footer">
-            <p class="copyright">&copy; NxNE. All rights reserved.</p>
-        </footer>
-
-    </div>
-
-    <!-- BG -->
-    <div id="bg"></div>
-
-    <!-- Scripts -->
-    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/util.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-
+<body>
+    <header>
+        <h1>NxNE</h1>
+        <p>Welcome to NxNE<br>We Empower Founders</p>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                <li><a href="{{ url_for('tagline_generator') }}">Tagline Generator</a></li>
+                <li><a href="{{ url_for('brainstorm') }}">Brainstorm</a></li>
+                <li><a href="{{ url_for('script_generator') }}">Script Generator</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
 </body>
 </html>
