@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Register</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+    <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" /></noscript>
+</head>
+<body class="is-preload">
+    <div id="wrapper">
+        <header id="header">
+            <div class="logo">
+                <span class="icon fa-user-plus"></span>
+            </div>
+            <div class="content">
+                <div class="inner">
+                    <h1>Register</h1>
+                    <form method="post" action="{{ url_for('register') }}">
+                        <div class="fields">
+                            <div class="field">
+                                <label for="username">Username</label>
+                                <input type="text" name="username" id="username" required />
+                            </div>
+                            <div class="field">
+                                <label for="email">Email</label>
+                                <input type="email" name="email" id="email" required />
+                            </div>
+                            <div class="field">
+                                <label for="password">Password</label>
+                                <input type="password" name="password" id="password" required />
+                            </div>
+                        </div>
+                        <ul class="actions">
+                            <li><input type="submit" value="Register" class="primary" /></li>
+                        </ul>
+                    </form>
+                    <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+                </div>
+            </div>
+        </header>
+        <footer id="footer">
+            <p class="copyright">&copy; NxNE. All rights reserved.</p>
+        </footer>
+    </div>
+    <div id="bg"></div>
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/util.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
