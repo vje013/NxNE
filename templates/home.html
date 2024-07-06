@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Home</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+    <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" /></noscript>
+</head>
+<body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Header -->
+        <header id="header">
+            <div class="logo">
+                <span class="icon fa-pencil-alt"></span>
+            </div>
+            <div class="content">
+                <div class="inner">
+                    <h1>NxNE</h1>
+                    <p>Welcome to NxNE</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/tagline-generator">Tagline Generator</a></li>
+                    <li><a href="/brainstorm">Brainstorm</a></li>
+                    <li><a href="/script_generator">Script Generator</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <p class="copyright">&copy; NxNE. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <!-- BG -->
+    <div id="bg"></div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/util.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+</html>

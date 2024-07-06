@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Script</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome-all.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}">
+</head>
+<body class="is-preload">
+    <div id="wrapper">
+        <header id="header">
+            <h1>Generated Script</h1>
+            <p>Here is your generated TV commercial script.</p>
+        </header>
+        <nav id="nav">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/tagline-generator">Tagline Generator</a></li>
+                <li><a href="/brainstorm">Brainstorm</a></li>
+                <li><a href="/script_generator" class="active">Script Generator</a></li>
+            </ul>
+        </nav>
+        <div id="main">
+            <section class="main">
+                <pre>{{ script }}</pre>
+            </section>
+        </div>
+        <footer id="footer">
+            <p>&copy; NxNE. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tagline Results</title>
+</head>
+<body>
+    <h1>Generated Taglines</h1>
+    <ul>
+        {% for tagline in taglines.split('\n') %}
+            <li>{{ tagline }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/tagline-generator">Generate Another Tagline</a>
+    <a href="/">Return to Home</a>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Script Generator</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+    <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" /></noscript>
+    <style>
+        #loading {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 2;
+            text-align: center;
+            font-size: 24px;
+            padding-top: 20%;
+        }
+    </style>
+</head>
+<body class="is-preload">
+
+<div id="wrapper">
+
+    <header id="header">
+        <div class="logo">
+            <span class="icon fa-pencil-alt"></span>
+        </div>
+        <div class="content">
+            <div class="inner">
+                <h1>Script Generator</h1>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/tagline-generator">Tagline Generator</a></li>
+                <li><a href="/brainstorm">Brainstorm</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="main">
+
+        <article id="script">
+            <h2 class="major">Script Generator</h2>
+            <form method="post" action="/script_generator" onsubmit="showLoading()">
+                <div class="fields">
+                    <div class="field">
+                        <label for="company_product_name">Company & Product Name</label>
+                        <input type="text" name="company_product_name" id="company_product_name" required />
+                    </div>
+                    <div class="field">
+                        <label for="user_prompt">Logline for the Commercial</label>
+                        <input type="text" name="user_prompt" id="user_prompt" required />
+                    </div>
+                    <div class="field">
+                        <label for="tone">3 Words Describing Tone</label>
+                        <input type="text" name="tone" id="tone" required />
+                    </div>
+                    <div class="field">
+                        <label for="images">3 Images You Want in the Commercial</label>
+                        <input type="text" name="images" id="images" required />
+                    </div>
+                </div>
+                <ul class="actions">
+                    <li><input type="submit" value="Generate Script" class="primary" /></li>
+                </ul>
+            </form>
+            <ul class="actions">
+                <li><a href="/" class="button">Go Home</a></li>
+            </ul>
+        </article>
+
+    </div>
+
+    <footer id="footer">
+        <p>&copy; NxNE. All rights reserved.</p>
+    </footer>
+
+</div>
+
+<div id="bg"></div>
+<div id="loading">NXNE LOADING INSIGHTS...</div>
+
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script>
+    function showLoading() {
+        document.getElementById('loading').style.display = 'block';
+    }
+</script>
+</body>
+</html>

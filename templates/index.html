@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tagline Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome-all.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}">
+    <style>
+        /* Add this style for the loading screen */
+        #loading {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 2;
+            text-align: center;
+            font-size: 24px;
+            padding-top: 20%;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <header id="header">
+            <h1>Tagline Generator</h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/tagline-generator">Tagline Generator</a></li>
+                    <li><a href="/brainstorm">Brainstorm</a></li>
+                    <li><a href="/script_generator">Script Generator</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <form method="post" onsubmit="showLoading()">
+                <label for="company">Company:</label>
+                <input type="text" id="company" name="company" required>
+                <label for="product">Product:</label>
+                <input type="text" id="product" name="product" required>
+                <label for="industry">Industry:</label>
+                <input type="text" id="industry" name="industry" required>
+                <label for="adjectives">Adjectives:</label>
+                <input type="text" id="adjectives" name="adjectives" required>
+                <button type="submit">Generate Taglines</button>
+            </form>
+        </main>
+        <footer id="footer">
+            <p>&copy; NxNE. All rights reserved.</p>
+        </footer>
+    </div>
+    <div id="loading">NXNE LOADING INSIGHTS...</div>
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/util.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+        function showLoading() {
+            document.getElementById('loading').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

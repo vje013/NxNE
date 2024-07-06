@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}NxNE{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome-all.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body class="is-preload">
+    <div id="wrapper">
+        <!-- Header -->
+        <header id="header">
+            <div class="logo">
+                <span class="icon fa-diamond"></span>
+            </div>
+            <div class="content">
+                <div class="inner">
+                    <h1>NxNE</h1>
+                    <p>Welcome to NxNE - Get Empowered.</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/tagline-generator">Tagline Generator</a></li>
+                    <li><a href="/brainstorm">Brainstorm</a></li>
+                    <li><a href="/script_generator">Script Generator</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Main -->
+        <div id="main">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <p class="copyright">© NxNE. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <div id="bg"></div>
+</body>
+</html>

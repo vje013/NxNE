@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Brainstorm</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+    <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" /></noscript>
+    <style>
+        /* Add this style for the loading screen */
+        #loading {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 2;
+            text-align: center;
+            font-size: 24px;
+            padding-top: 20%;
+        }
+    </style>
+</head>
+<body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Header -->
+        <header id="header">
+            <div class="logo">
+                <span class="icon fa-pencil-alt"></span>
+            </div>
+            <div class="content">
+                <div class="inner">
+                    <h1>Brainstorm</h1>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <article>
+            <form method="post" onsubmit="showLoading()">
+                <div class="fields">
+                    <div class="field">
+                        <label for="role">Select a role:</label>
+                        <select name="role" id="role">
+                            {% for role_id, role in roles.items() %}
+                                <option value="{{ role_id }}">{{ role.title }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="problem">Describe your problem:</label>
+                        <input type="text" name="problem" id="problem" />
+                    </div>
+                </div>
+                <ul class="actions">
+                    <li><input type="submit" value="Submit" class="primary" /></li>
+                </ul>
+            </form>
+        </article>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <p class="copyright">&copy; NxNE. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <!-- BG -->
+    <div id="bg"></div>
+    <div id="loading">NXNE: GENERATING YOUR INSIGHTS...</div>
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/util.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+        function showLoading() {
+            document.getElementById('loading').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
