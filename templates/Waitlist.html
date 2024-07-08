@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Waitlist</title>
@@ -6,23 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
     <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" /></noscript>
-    <style>
-        #loading {
-            display: none;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(255, 255, 255, 0.8);
-            z-index: 2;
-            text-align: center;
-            font-size: 24px;
-            padding-top: 20%;
-        }
-    </style>
 </head>
 <body class="is-preload">
     <div id="wrapper">
@@ -32,7 +15,8 @@
             </div>
             <div class="content">
                 <div class="inner">
-                    <h1>Waitlist</h1>
+                    <h1>Join Our Waitlist</h1>
+                    <p>Be the first to know when we launch our new features!</p>
                 </div>
             </div>
             <nav>
@@ -44,45 +28,36 @@
                 </ul>
             </nav>
         </header>
-
-        <article>
-            <form method="post" onsubmit="showLoading()">
+        <div class="content">
+            <form method="post" action="{{ url_for('waitlist') }}">
                 <div class="fields">
-                    <div class="field">
-                        <label for="name">Name:</label>
+                    <div class="field half">
+                        <label for="name">Name</label>
                         <input type="text" name="name" id="name" required />
                     </div>
-                    <div class="field">
-                        <label for="email">Email:</label>
+                    <div class="field half">
+                        <label for="email">Email</label>
                         <input type="email" name="email" id="email" required />
                     </div>
                     <div class="field">
-                        <label for="message">Message:</label>
+                        <label for="message">Message</label>
                         <textarea name="message" id="message" rows="4">WAITLIST ME</textarea>
                     </div>
                 </div>
-                <div class="actions">
-                    <input type="submit" value="Submit" class="primary" />
-                </div>
+                <ul class="actions">
+                    <li><input type="submit" value="Join Waitlist" class="primary" /></li>
+                </ul>
             </form>
-        </article>
-
+        </div>
         <footer id="footer">
             <p class="copyright">&copy; NxNE. All rights reserved.</p>
         </footer>
     </div>
-
     <div id="bg"></div>
-    <div id="loading">Submitting your request...</div>
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/util.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-    <script>
-        function showLoading() {
-            document.getElementById('loading').style.display = 'block';
-        }
-    </script>
 </body>
 </html>

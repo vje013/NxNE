@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Waitlist Success</title>
@@ -15,25 +15,23 @@
             </div>
             <div class="content">
                 <div class="inner">
-                    <h1>Success!</h1>
-                    <p>Thank you, {{ name }}. You have been added to the waitlist.</p>
+                    <h1>Thank You!</h1>
+                    <p>You have successfully joined our waitlist, {{ name }}.</p>
                 </div>
             </div>
             <nav>
                 <ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="/brainstorm">Brainstorm</a></li>
-                    <li><a href="/script_generator">Script Generator</a></li>
-                    <li><a href="{{ url_for('Coming_Soon') }}">Coming Soon</a></li>
+                    <li><a href="{{ url_for('tagline_generator') }}">Tagline Generator</a></li>
+                    <li><a href="{{ url_for('brainstorm') }}">Brainstorm</a></li>
+                    <li><a href="{{ url_for('script_generator') }}">Script Generator</a></li>
                 </ul>
             </nav>
         </header>
-
         <footer id="footer">
             <p class="copyright">&copy; NxNE. All rights reserved.</p>
         </footer>
     </div>
-
     <div id="bg"></div>
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
