@@ -1,59 +1,39 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>NxNE Home</title>
+    <title>Waitlist Success</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
     <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" /></noscript>
-    <style>
-        .content-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            height: 25vh;
-        }
-        .content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-    </style>
 </head>
 <body class="is-preload">
     <div id="wrapper">
         <header id="header">
             <div class="logo">
-                <span class="icon fa-home"></span>
+                <span class="icon fa-check"></span>
             </div>
             <div class="content">
                 <div class="inner">
-                    <h1>NxNE</h1>
-                    <p>Welcome to NxNE<br>We Empower Founders</p>
+                    <h1>Success!</h1>
+                    <p>Thank you, {{ name }}. You have been added to the waitlist.</p>
                 </div>
             </div>
             <nav>
                 <ul>
-                    <li><a href="{{ url_for('tagline_generator') }}">Tagline Generator</a></li>
-                    <li><a href="{{ url_for('brainstorm') }}">Brainstorm</a></li>
-                    <li><a href="{{ url_for('script_generator') }}">Script Generator</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/brainstorm">Brainstorm</a></li>
+                    <li><a href="/script_generator">Script Generator</a></li>
                     <li><a href="{{ url_for('Coming_Soon') }}">Coming Soon</a></li>
-                    <li><a href="{{ url_for('Waitlist') }}">Waitlist</a></li>
                 </ul>
             </nav>
         </header>
-        <div class="content-container">
-            <div class="content">
-                <h4>We're here to help you grow your business north by northeast.</h4>
-                <p>
-                    ⇗Try our MVP Features for free above⇗
-                </p>
-            </div>
-        </div>
+
         <footer id="footer">
             <p class="copyright">&copy; NxNE. All rights reserved.</p>
         </footer>
     </div>
+
     <div id="bg"></div>
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>

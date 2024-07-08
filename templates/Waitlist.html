@@ -1,13 +1,12 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Brainstorm</title>
+    <title>Waitlist</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
     <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" /></noscript>
     <style>
-        /* Add this style for the loading screen */
         #loading {
             display: none;
             position: fixed;
@@ -26,26 +25,22 @@
     </style>
 </head>
 <body class="is-preload">
-    <!-- Wrapper -->
     <div id="wrapper">
-
-        <!-- Header -->
         <header id="header">
             <div class="logo">
-                <span class="icon fa-pencil-alt"></span>
+                <span class="icon fa-envelope"></span>
             </div>
             <div class="content">
                 <div class="inner">
-                    <h1>Brainstorm</h1>
+                    <h1>Waitlist</h1>
                 </div>
             </div>
             <nav>
                 <ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="/brainstorm">Tagline Generator</a></li>
+                    <li><a href="/brainstorm">Brainstorm</a></li>
                     <li><a href="/script_generator">Script Generator</a></li>
                     <li><a href="{{ url_for('Coming_Soon') }}">Coming Soon</a></li>
-                    <li><a href="{{ url_for('Waitlist') }}">Waitlist</a></li>
                 </ul>
             </nav>
         </header>
@@ -54,16 +49,16 @@
             <form method="post" onsubmit="showLoading()">
                 <div class="fields">
                     <div class="field">
-                        <label for="role">Select a role:</label>
-                        <select name="role" id="role">
-                            {% for role_id, role in roles.items() %}
-                                <option value="{{ role_id }}">{{ role.title }}</option>
-                            {% endfor %}
-                        </select>
+                        <label for="name">Name:</label>
+                        <input type="text" name="name" id="name" required />
                     </div>
                     <div class="field">
-                        <label for="problem">Describe your problem:</label>
-                        <input type="text" name="problem" id="problem" />
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" id="email" required />
+                    </div>
+                    <div class="field">
+                        <label for="message">Message:</label>
+                        <textarea name="message" id="message" rows="4">WAITLIST ME</textarea>
                     </div>
                 </div>
                 <div class="actions">
@@ -72,17 +67,13 @@
             </form>
         </article>
 
-        <!-- Footer -->
         <footer id="footer">
             <p class="copyright">&copy; NxNE. All rights reserved.</p>
         </footer>
-
     </div>
 
-    <!-- BG -->
     <div id="bg"></div>
-    <div id="loading">NXNE: GENERATING YOUR INSIGHTS...</div>
-    <!-- Scripts -->
+    <div id="loading">Submitting your request...</div>
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
