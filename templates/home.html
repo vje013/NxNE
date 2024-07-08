@@ -6,6 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
     <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" /></noscript>
+    <style>
+        .content-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh;
+        }
+        .content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body class="is-preload">
     <div id="wrapper">
@@ -30,15 +43,15 @@
         </header>
         <div class="content-container">
             <div class="content">
-                <h2>⇗FREE⇗</h2>
-                <p>Achieve your business visions with our cutting-edge tools and insights.<b>
-                    ⇗Try our MVP Features for free above⇗</b>
+                <h2>Take your business north by northeast.</h2>
+                <p>
+                    ⇗Try our MVP Features for free above⇗
                 </p>
             </div>
-            <footer id="footer">
-                <p class="copyright">&copy; NxNE. All rights reserved.</p>
-            </footer>
         </div>
+        <footer id="footer">
+            <p class="copyright">&copy; NxNE. All rights reserved.</p>
+        </footer>
     </div>
     <div id="bg"></div>
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
