@@ -23,6 +23,11 @@
             font-size: 24px;
             padding-top: 20%;
         }
+
+        #loading img {
+            max-width: 100px;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body class="is-preload">
@@ -81,7 +86,10 @@
 
     <!-- BG -->
     <div id="bg"></div>
-    <div id="loading">NXNE: GENERATING YOUR INSIGHTS...</div>
+    <div id="loading">
+        <img src="{{ url_for('static', filename='assets/LoadingAsset_Business1.png') }}" alt="Loading">
+        NXNE: GENERATING YOUR INSIGHTS...
+    </div>
     <!-- Scripts -->
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
