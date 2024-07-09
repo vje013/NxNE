@@ -25,6 +25,11 @@
             padding-top: 20%;
         }
 
+        #loading img {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+
         body {
             margin: 0;
             padding: 0;
@@ -134,7 +139,10 @@
             <p>&copy; NxNE. All rights reserved.</p>
         </footer>
     </div>
-    <div id="loading">NXNE LOADING INSIGHTS...</div>
+    <div id="loading">
+        <img src="{{ url_for('static', filename='assets/LoadingAsset_Creative1.png') }}" alt="Loading...">
+        <span>Your NxNE C-Suite is diving deep...</span>
+    </div>
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
