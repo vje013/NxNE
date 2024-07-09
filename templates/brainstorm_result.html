@@ -7,6 +7,20 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
     <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" /></noscript>
     <style>
+        body, html {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        #wrapper {
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+        }
         pre {
             white-space: pre-wrap;
             word-wrap: break-word;
@@ -14,6 +28,7 @@
             max-width: 100%;
             padding: 10px;
             box-sizing: border-box;
+            text-align: left; /* Ensure suggestions are left-aligned */
         }
         .actions {
             margin-top: 20px;
