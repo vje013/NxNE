@@ -25,7 +25,7 @@
         }
 
         #loading img {
-            max-width: 200px;
+            max-width: 500px;
             margin-bottom: 20px;
         }
 
@@ -95,7 +95,9 @@
     <div id="bg"></div>
     <div id="loading">
         <img src="{{ url_for('static', filename='assets/LoadingAsset_Business1.png') }}" alt="Loading">
-        <span>NXNE: GENERATING YOUR INSIGHTS...</span>
+        <span>NXNE: GENERATING YOUR INSIGHTS...<b>
+            Pro Tip: Click on a suggestion if you want a deeper dive.
+        </b></span>
     </div>
     <!-- Scripts -->
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
