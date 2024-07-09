@@ -1,7 +1,11 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
     <title>Tagline Results</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+    <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" /></noscript>
     <style>
         ul {
             list-style-type: none;  /* Removes the default bullet points */
@@ -13,14 +17,43 @@
         }
     </style>
 </head>
-<body>
-    <h1>Generated Taglines</h1>
-    <ul>
-        {% for tagline in taglines.split('\n') %}
-            <li>{{ tagline }}</li>
-        {% endfor %}
-    </ul>
-    <a href="/tagline-generator">Generate Another Tagline</a>
-    <a href="/">Return to Home</a>
+<body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Header -->
+        <header id="header">
+            <div class="logo">
+                <span class="icon fa-pencil-alt"></span>
+            </div>
+            <div class="content">
+                <div class="inner">
+                    <h1>Generated Taglines</h1>
+                    <ul>
+                        {% for tagline in taglines.split('\n') %}
+                            <li>{{ tagline }}</li>
+                        {% endfor %}
+                    </ul>
+                    <a href="/tagline-generator">Generate Another Tagline</a>
+                    <a href="/">Return to Home</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <p class="copyright">&copy; NxNE. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <!-- BG -->
+    <div id="bg"></div>
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/util.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
