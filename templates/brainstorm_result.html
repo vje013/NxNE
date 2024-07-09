@@ -20,11 +20,7 @@
                 <div class="inner">
                     <h1>Brainstorm Results</h1>
                     <h2>Your {{ role.title }}'s suggestions for: {{ problem }}</h2>
-                    <ol>
-                        {% for suggestion in suggestions.values() %}
-                            <li>{{ suggestion }}</li>
-                        {% endfor %}
-                    </ol>
+                    <pre>{{ suggestions }}</pre>
                     <a href="/brainstorm">Back to Brainstorm</a>
                 </div>
             </div>
