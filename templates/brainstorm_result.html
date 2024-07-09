@@ -15,6 +15,9 @@
             padding: 10px;
             box-sizing: border-box;
         }
+        .actions {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body class="is-preload">
@@ -31,7 +34,10 @@
                     <h1>Brainstorm Results</h1>
                     <h2>Your {{ role.title }}'s suggestions for: {{ problem }}</h2>
                     <pre>{{ suggestions }}</pre>
-                    <a href="/brainstorm">Back to Brainstorm</a>
+                    <div class="actions">
+                        <a href="/brainstorm" class="button">Back to Brainstorm</a>
+                        <button id="dive-deeper" class="button">DIVE DEEPER</button>
+                    </div>
                 </div>
             </div>
         </header>
@@ -51,5 +57,35 @@
     <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/util.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+        document.getElementById('dive-deeper').addEventListener('click', function() {
+            // Capture original problem and role_id
+            var originalProblem = "{{ problem }}";
+            var roleId = "{{ role.title_key }}";
+
+            // Create a form to submit
+            var form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '/brainstorm';
+
+            // Add role_id field
+            var roleField = document.createElement('input');
+            roleField.type = 'hidden';
+            roleField.name = 'role';
+            roleField.value = roleId;
+            form.appendChild(roleField);
+
+            // Add problem field
+            var problemField = document.createElement('input');
+            problemField.type = 'hidden';
+            problemField.name = 'problem';
+            problemField.value = originalProblem + " Dive Deep";
+            form.appendChild(problemField);
+
+            // Add the form to the body and submit
+            document.body.appendChild(form);
+            form.submit();
+        });
+    </script>
 </body>
 </html>
