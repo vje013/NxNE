@@ -15,6 +15,27 @@
             white-space: -o-pre-wrap; /* Opera 7 */
             word-wrap: break-word; /* Internet Explorer 5.5+ */
         }
+
+        .actions {
+            margin-top: 20px;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body class="is-preload">
@@ -23,18 +44,14 @@
             <h1>Generated Script</h1>
             <p>Here is your generated TV commercial script.</p>
         </header>
-        <nav id="nav">
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/tagline-generator">Tagline Generator</a></li>
-                <li><a href="/brainstorm">Brainstorm</a></li>
-                <li><a href="/script_generator" class="active">Script Generator</a></li>
-            </ul>
-        </nav>
         <div id="main">
             <section class="main">
                 <div class="script-content">{{ script|safe }}</div>
             </section>
+            <div class="actions">
+                <a href="/script_generator" class="button">More Scripts!</a>
+                <a href="/" class="button">Home</a>
+            </div>
         </div>
         <footer id="footer">
             <p>&copy; NxNE. All rights reserved.</p>
