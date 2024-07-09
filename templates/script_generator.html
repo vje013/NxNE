@@ -104,6 +104,11 @@
     function showLoading() {
         document.getElementById('loading').style.display = 'block';
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('form');
+        form.addEventListener('submit', showLoading);
+    });
 </script>
 </body>
 </html>
