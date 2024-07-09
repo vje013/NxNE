@@ -33,6 +33,14 @@
         .button:hover {
             background-color: #0056b3;
         }
+        .suggestion {
+            cursor: pointer;
+            color: #007BFF;
+            text-decoration: underline;
+        }
+        .suggestion:hover {
+            color: #0056b3;
+        }
     </style>
 </head>
 <body class="is-preload">
@@ -48,10 +56,13 @@
                 <div class="inner">
                     <h1>Brainstorm Results</h1>
                     <h2>Your {{ role.title }}'s suggestions for: {{ problem }}</h2>
-                    <pre>{{ suggestions }}</pre>
+                    <pre>
+                    {% for suggestion in suggestions.split('\n') %}
+                        <span class="suggestion" onclick="diveDeeper('{{ suggestion }}')">{{ suggestion }}</span>
+                    {% endfor %}
+                    </pre>
                     <div class="actions">
                         <a href="/brainstorm" class="button">Back to Brainstorm</a>
-                        <button id="dive-deeper" class="button">DIVE DEEPER</button>
                     </div>
                 </div>
             </div>
@@ -73,41 +84,40 @@
     <script src="{{ url_for('static', filename='js/util.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     <script>
-        document.getElementById('dive-deeper').addEventListener('click', function() {
-            // Capture original problem and role_id
-            var originalProblem = "{{ problem }}";
-            var roleId = "{{ role.title_key }}";
+        function diveDeeper(suggestion) {
+            var role = "{{ role.title }}";
+            var problem = "{{ problem }}";
 
             // Create a form to submit
             var form = document.createElement('form');
             form.method = 'POST';
             form.action = '/dive_deeper';
 
-            // Add role_id field
+            // Add role field
             var roleField = document.createElement('input');
             roleField.type = 'hidden';
             roleField.name = 'role';
-            roleField.value = roleId;
+            roleField.value = role;
             form.appendChild(roleField);
 
             // Add problem field
             var problemField = document.createElement('input');
             problemField.type = 'hidden';
             problemField.name = 'problem';
-            problemField.value = originalProblem;
+            problemField.value = problem;
             form.appendChild(problemField);
 
-            // Add original suggestions field
-            var suggestionsField = document.createElement('input');
-            suggestionsField.type = 'hidden';
-            suggestionsField.name = 'suggestions';
-            suggestionsField.value = "{{ suggestions }}";
-            form.appendChild(suggestionsField);
+            // Add suggestion field
+            var suggestionField = document.createElement('input');
+            suggestionField.type = 'hidden';
+            suggestionField.name = 'suggestion';
+            suggestionField.value = suggestion;
+            form.appendChild(suggestionField);
 
             // Add the form to the body and submit
             document.body.appendChild(form);
             form.submit();
-        });
+        }
     </script>
 </body>
 </html>
