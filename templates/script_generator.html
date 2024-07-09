@@ -107,7 +107,9 @@
 
     document.addEventListener('DOMContentLoaded', function() {
         const form = document.querySelector('form');
-        form.addEventListener('submit', showLoading);
+        form.addEventListener('submit', function(event) {
+            showLoading();
+        });
     });
 </script>
 </body>
