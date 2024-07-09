@@ -7,6 +7,20 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
     <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" /></noscript>
     <style>
+        body, html {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        #wrapper {
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+        }
         ul {
             list-style-type: none;  /* Removes the default bullet points */
             padding-left: 0;        /* Removes the left padding */
@@ -14,6 +28,24 @@
         li {
             padding-left: 1em;      /* Adds padding for alignment */
             text-indent: -1em;      /* Adjusts the text indentation */
+        }
+        .actions {
+            margin-top: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -34,8 +66,10 @@
                             <li>{{ tagline }}</li>
                         {% endfor %}
                     </ul>
-                    <a href="/tagline-generator">Generate Another Tagline</a>
-                    <a href="/">Return to Home</a>
+                    <div class="actions">
+                        <a href="/tagline-generator" class="button">Generate Another Tagline</a>
+                        <a href="/" class="button">Return to Home</a>
+                    </div>
                 </div>
             </div>
         </header>
