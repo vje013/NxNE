@@ -51,7 +51,7 @@
                     <pre>{{ suggestions }}</pre>
                     <div class="actions">
                         <a href="/brainstorm" class="button">Back to Brainstorm</a>
-                        <button id="dive-deeper" class="button">Dive Deeper</button>
+                        <button id="dive-deeper" class="button">DIVE DEEPER</button>
                     </div>
                 </div>
             </div>
@@ -81,7 +81,7 @@
             // Create a form to submit
             var form = document.createElement('form');
             form.method = 'POST';
-            form.action = '/brainstorm';
+            form.action = '/dive_deeper';
 
             // Add role_id field
             var roleField = document.createElement('input');
@@ -94,8 +94,15 @@
             var problemField = document.createElement('input');
             problemField.type = 'hidden';
             problemField.name = 'problem';
-            problemField.value = originalProblem + " Dive Deep";
+            problemField.value = originalProblem;
             form.appendChild(problemField);
+
+            // Add original suggestions field
+            var suggestionsField = document.createElement('input');
+            suggestionsField.type = 'hidden';
+            suggestionsField.name = 'suggestions';
+            suggestionsField.value = "{{ suggestions }}";
+            form.appendChild(suggestionsField);
 
             // Add the form to the body and submit
             document.body.appendChild(form);
