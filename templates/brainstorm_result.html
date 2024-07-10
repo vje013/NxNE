@@ -75,7 +75,11 @@
                 <div class="inner">
                     <h1>Brainstorm Results</h1>
                     <h2>Your {{ role.title }}'s suggestions for: {{ problem }}</h2>
-                    <pre>{% for suggestion in suggestions.split('\n') %}<span class="suggestion" onclick="diveDeeper('{{ suggestion }}')">{{ suggestion }}</span>{% endfor %}</pre>
+                    <pre>
+                    {% for suggestion in suggestions.split('\n') %}
+                        <span class="suggestion" onclick="diveDeeper('{{ suggestion }}')">{{ suggestion }}</span><br>
+                    {% endfor %}
+                    </pre>
                     <div class="actions">
                         <a href="/brainstorm" class="button">Back to Brainstorm</a>
                     </div>
