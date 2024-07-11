@@ -5,7 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
-    <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" /></noscript>
+    <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" />
+    </noscript>
     <style>
         .box {
             margin-bottom: 20px;
@@ -32,7 +33,7 @@
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="{{ url_for('tagline_generator') }}">Tagline Generator</a></li>
-                    <li><a href="/script_generator">Script Generator</a></li>
+                    <li><a href="{{ url_for('script_generator') }}">Script Generator</a></li>
                     <li><a href="{{ url_for('Coming_Soon') }}">Coming Soon</a></li>
                     <li><a href="{{ url_for('waitlist') }}">Waitlist</a></li>
                 </ul>
@@ -47,6 +48,8 @@
                     <strong>{{ profile['current_company_name'] }}</strong><br>
                     {{ profile['current_role_title'] }}
                 </div>
+                {% else %}
+                <p>No whales found.</p>
                 {% endfor %}
             </div>
 
@@ -57,6 +60,8 @@
                     <strong>{{ profile['current_company_name'] }}</strong><br>
                     {{ profile['current_role_title'] }}
                 </div>
+                {% else %}
+                <p>No hot leads found.</p>
                 {% endfor %}
             </div>
 
@@ -67,6 +72,8 @@
                     <strong>{{ profile['current_company_name'] }}</strong><br>
                     {{ profile['current_role_title'] }}
                 </div>
+                {% else %}
+                <p>No warm leads found.</p>
                 {% endfor %}
             </div>
 
@@ -77,6 +84,8 @@
                     <strong>{{ profile['current_company_name'] }}</strong><br>
                     {{ profile['current_role_title'] }}
                 </div>
+                {% else %}
+                <p>No potential leads found.</p>
                 {% endfor %}
             </div>
         </main>
