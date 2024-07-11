@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lead Generation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Lead Generation</h1>
+            <form action="/leadgen" method="POST">
+                <div class="field">
+                    <label class="label">Business Need</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="business_need">
+                                <option value="Accounting">Accounting</option>
+                                <option value="CRMs">CRMs</option>
+                                <option value="ERP">ERP</option>
+                                <option value="Project Management">Project Management</option>
+                                <option value="HR">HR</option>
+                                <option value="Payroll">Payroll</option>
+                                <option value="Supply Chain and Inventory">Supply Chain and Inventory</option>
+                                <option value="Sales">Sales</option>
+                                <option value="Data">Data</option>
+                                <option value="Marketing">Marketing</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-primary" type="submit">Generate Leads</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

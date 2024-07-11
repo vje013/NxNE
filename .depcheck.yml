@@ -1,0 +1,12 @@
+layers:
+  root:
+    path: "/Users/MacBook/Desktop/NxNE/tagline_generator"
+    rules:
+      imports:
+        entry: "/Users/MacBook/Desktop/NxNE/tagline_generator"
+        include:
+          - "**/*.py"
+whitelist:
+  - "builtins"
+  - "os"
+  - "sys"

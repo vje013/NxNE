@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lead Generation Results</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Lead Generation Results</h1>
+
+            <h2 class="subtitle">Whales (recent growth)</h2>
+            <div id="whales">
+                {% for profile in whales %}
+                <div class="box">
+                    <strong>{{ profile['current_company_name'] }}</strong><br>
+                    {{ profile['current_role_title'] }}
+                </div>
+                {% endfor %}
+            </div>
+
+            <h2 class="subtitle">Hot Leads (6 point profiles)</h2>
+            <div id="hot_leads">
+                {% for profile in hot_leads %}
+                <div class="box">
+                    <strong>{{ profile['current_company_name'] }}</strong><br>
+                    {{ profile['current_role_title'] }}
+                </div>
+                {% endfor %}
+            </div>
+
+            <h2 class="subtitle">Warm Leads (5 point profiles)</h2>
+            <div id="warm_leads">
+                {% for profile in warm_leads %}
+                <div class="box">
+                    <strong>{{ profile['current_company_name'] }}</strong><br>
+                    {{ profile['current_role_title'] }}
+                </div>
+                {% endfor %}
+            </div>
+
+            <h2 class="subtitle">Potential Leads (4 point profiles)</h2>
+            <div id="potential_leads">
+                {% for profile in potential_leads %}
+                <div class="box">
+                    <strong>{{ profile['current_company_name'] }}</strong><br>
+                    {{ profile['current_role_title'] }}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</body>
+</html>

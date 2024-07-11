@@ -1,130 +1,53 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Tagline Results</title>
+    <title>Register</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
     <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" /></noscript>
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KW2XPR1WW8"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-KW2XPR1WW8');
-    </script>
-
-    <style>
-        body, html {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-        #wrapper {
-            max-width: 800px;
-            width: 100%;
-            padding: 20px;
-        }
-        ul {
-            list-style-type: none;  /* Removes the default bullet points */
-            padding-left: 0;        /* Removes the left padding */
-        }
-        li {
-            padding-left: 1em;      /* Adds padding for alignment */
-            text-indent: -1em;      /* Adjusts the text indentation */
-        }
-        .actions {
-            margin-top: 20px;
-        }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 16px;
-            color: #fff;
-            background-color: #007BFF;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            cursor: pointer;
-            margin: 5px;
-        }
-        .button:hover {
-            background-color: #0056b3;
-        }
-    </style>
 </head>
 <body class="is-preload">
-    <!-- Wrapper -->
     <div id="wrapper">
-
-        <!-- Header -->
         <header id="header">
             <div class="logo">
-                <span class="icon fa-pencil-alt"></span>
+                <span class="icon fa-user-plus"></span>
             </div>
             <div class="content">
                 <div class="inner">
-                    <h1>Generated Taglines</h1>
-                    <h2 id="dynamic-headline"></h2>
-                    <ul>
-                        {% for tagline in taglines.split('\n') %}
-                            <li>{{ tagline }}</li>
-                        {% endfor %}
-                    </ul>
-                    <div class="actions">
-                        <a href="/tagline-generator" class="button">More Tags!</a>
-                        <a href="/" class="button">Return to Home</a>
-                    </div>
+                    <h1>Register</h1>
+                    <form method="post" action="{{ url_for('register') }}">
+                        <div class="fields">
+                            <div class="field">
+                                <label for="username">Username</label>
+                                <input type="text" name="username" id="username" required />
+                            </div>
+                            <div class="field">
+                                <label for="email">Email</label>
+                                <input type="email" name="email" id="email" required />
+                            </div>
+                            <div class="field">
+                                <label for="password">Password</label>
+                                <input type="password" name="password" id="password" required />
+                            </div>
+                        </div>
+                        <ul class="actions">
+                            <li><input type="submit" value="Register" class="primary" /></li>
+                        </ul>
+                    </form>
+                    <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
                 </div>
             </div>
         </header>
-
-        <!-- Footer -->
         <footer id="footer">
             <p class="copyright">&copy; NxNE. All rights reserved.</p>
         </footer>
-
     </div>
-
-    <!-- BG -->
     <div id="bg"></div>
-    <!-- Scripts -->
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/util.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-    <script>
-        // Dictionary of statements
-        const statements = [
-            "Your CMO and Creative Director came up with these on the last company retreat:",
-            "Your Creative Director burned the midnight oil for these:",
-            "Your CMO went back to the drawing board for these:",
-            "As Creative Director, I'm proud to show you these:",
-            "The creative team is on roll:",
-            "We burned the candle at both ends for this one:",
-            "Your Creative Director gave it 110%, we hope you love these:",
-            "I moved mountains to come up with these. But as your CMO, no pain, no gain. Hope you like them:"
-        ];
-
-        // Function to select a random statement
-        function getRandomStatement() {
-            const randomIndex = Math.floor(Math.random() * statements.length);
-            return statements[randomIndex];
-        }
-
-        // Insert the random statement into the HTML
-        document.addEventListener("DOMContentLoaded", function() {
-            const headlineElement = document.getElementById("dynamic-headline");
-            headlineElement.textContent = getRandomStatement();
-        });
-    </script>
 </body>
 </html>
