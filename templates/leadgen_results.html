@@ -1,16 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lead Generation Results</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+    <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" /></noscript>
+    <style>
+        .box {
+            margin-bottom: 20px;
+        }
+        .subtitle {
+            margin-top: 30px;
+        }
+    </style>
 </head>
-<body>
-    <section class="section">
-        <div class="container">
-            <h1 class="title">Lead Generation Results</h1>
+<body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+        <!-- Header -->
+        <header id="header">
+            <div class="logo">
+                <span class="icon fa-pencil-alt"></span>
+            </div>
+            <div class="content">
+                <div class="inner">
+                    <h1>Lead Generation Results</h1>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="{{ url_for('tagline_generator') }}">Tagline Generator</a></li>
+                    <li><a href="/script_generator">Script Generator</a></li>
+                    <li><a href="{{ url_for('Coming_Soon') }}">Coming Soon</a></li>
+                    <li><a href="{{ url_for('waitlist') }}">Waitlist</a></li>
+                </ul>
+            </nav>
+        </header>
 
+        <main>
             <h2 class="subtitle">Whales (recent growth)</h2>
             <div id="whales">
                 {% for profile in whales %}
@@ -50,7 +79,21 @@
                 </div>
                 {% endfor %}
             </div>
-        </div>
-    </section>
+        </main>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <p>&copy; NxNE. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- BG -->
+    <div id="bg"></div>
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/util.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
