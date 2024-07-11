@@ -8,15 +8,15 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome-all.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}">
     
-        <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW2XPR1WW8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KW2XPR1WW8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-KW2XPR1WW8');
-</script>
+      gtag('config', 'G-KW2XPR1WW8');
+    </script>
     
     <style>
         .script-content {
@@ -54,8 +54,8 @@
 <body class="is-preload">
     <div id="wrapper">
         <header id="header">
-            <h1>Generated Script</h1>
-            <p>Here is your generated TV commercial script.</p>
+            <h1>Your Commercial Script</h1>
+            <p id="dynamic-phrase"></p>
         </header>
         <div id="main">
             <section class="main">
@@ -71,5 +71,28 @@
         </footer>
     </div>
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script>
+        // Dictionary of phrases
+        const phrases = [
+            "As your Creative Director, it's an honor to present you with this script:",
+            "Our writers make me prouder every day. As your Creative Director, I hope this script makes you proud:",
+            "We put pen to paper for you, boss! As your Creative Director, I'm honored to be your pen-pusher:",
+            "The ink is still wet on this one:",
+            "Ben Franklin once said: 'Either write something worth reading or do something worth writing.' As your CMO, I hope my team's writing was worth it:",
+            "C.S. Lewis once said: 'You can make anything by writing,' as your CMO, I hope you make a damned good commercial with my writing"
+        ];
+
+        // Function to select a random phrase
+        function getRandomPhrase() {
+            const randomIndex = Math.floor(Math.random() * phrases.length);
+            return phrases[randomIndex];
+        }
+
+        // Insert the random phrase into the HTML
+        document.addEventListener("DOMContentLoaded", function() {
+            const phraseElement = document.getElementById("dynamic-phrase");
+            phraseElement.textContent = getRandomPhrase();
+        });
+    </script>
 </body>
 </html>
