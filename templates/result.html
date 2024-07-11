@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
     <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" /></noscript>
-    
-        <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW2XPR1WW8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-KW2XPR1WW8');
-</script>
-    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KW2XPR1WW8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-KW2XPR1WW8');
+    </script>
+
     <style>
         body, html {
             display: flex;
@@ -72,6 +72,7 @@
             <div class="content">
                 <div class="inner">
                     <h1>Generated Taglines</h1>
+                    <h2 id="dynamic-headline"></h2>
                     <ul>
                         {% for tagline in taglines.split('\n') %}
                             <li>{{ tagline }}</li>
@@ -100,5 +101,30 @@
     <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/util.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+        // Dictionary of statements
+        const statements = [
+            "Your CMO and Creative Director came up with these on the last company retreat:",
+            "Your Creative Director burned the midnight oil for these:",
+            "Your CMO went back to the drawing board for these:",
+            "As your Creative Director, I'm proud to show you these:",
+            "Your creative team is on roll:",
+            "We burned the candle at both ends for this one:",
+            "Your Creative Director gave it 110%, we hope you love these:",
+            "I moved mountains to come up with these. But as your CMO, no pain, no gain. Hope you like them:"
+        ];
+
+        // Function to select a random statement
+        function getRandomStatement() {
+            const randomIndex = Math.floor(Math.random() * statements.length);
+            return statements[randomIndex];
+        }
+
+        // Insert the random statement into the HTML
+        document.addEventListener("DOMContentLoaded", function() {
+            const headlineElement = document.getElementById("dynamic-headline");
+            headlineElement.textContent = getRandomStatement();
+        });
+    </script>
 </body>
 </html>
