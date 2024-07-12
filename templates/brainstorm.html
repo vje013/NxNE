@@ -145,7 +145,7 @@
 
         <main>
             <form method="post" onsubmit="showLoading()">
-                <label for="role">Select the executive in your C-suite you wish to consult:</label>
+                <label for="role">Select which executive in your C-suite you wish to consult:</label>
                 <select name="role" id="role">
                     {% for role_id, role in roles.items() %}
                         <option value="{{ role_id }}">{{ role.title }}</option>
