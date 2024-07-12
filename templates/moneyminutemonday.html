@@ -1,23 +1,24 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Script Generator</title>
+    <title>Money Minute Monday</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
     <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" /></noscript>
     
-        <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW2XPR1WW8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KW2XPR1WW8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-  gtag('config', 'G-KW2XPR1WW8');
-</script>
+        gtag('config', 'G-KW2XPR1WW8');
+    </script>
     
     <style>
+        /* Add this style for the loading screen */
         #loading {
             display: none;
             position: fixed;
@@ -37,6 +38,13 @@
         #loading img {
             max-width: 500px;
             margin-bottom: 20px;
+        }
+
+        #loading span {
+            display: block;
+            margin-top: 10px;
+            font-size: 24px;
+            color: #000;
         }
 
         body {
@@ -89,7 +97,7 @@
             margin: 10px 0 5px;
         }
 
-        form input {
+        form input, form select, form textarea {
             margin-bottom: 10px;
             padding: 10px;
             width: calc(100% - 20px);
@@ -123,13 +131,12 @@
 
         <!-- Header -->
         <header id="header">
-            <h1>Script Generator</h1>
+            <h1>Money Minute Monday</h1>
             <nav>
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="{{ url_for('tagline_generator') }}">Tagline Generator</a></li>
-                    <li><a href="/brainstorm">Brainstorm</a></li>
-                    <li><a href="{{ url_for('moneyminutemonday') }}">Money Minute Monday</a></li>
+                    <li><a href="/script_generator">Script Generator</a></li>
                     <li><a href="{{ url_for('Coming_Soon') }}">Coming Soon</a></li>
                     <li><a href="{{ url_for('waitlist') }}">Waitlist</a></li>
                 </ul>
@@ -137,16 +144,44 @@
         </header>
 
         <main>
-            <form method="post" action="/script_generator" onsubmit="showLoading()">
-                <label for="company_product_name">Company & Product Name</label>
-                <input type="text" name="company_product_name" id="company_product_name" required>
-                <label for="user_prompt">Logline for the Commercial</label>
-                <input type="text" name="user_prompt" id="user_prompt" required>
-                <label for="tone">3 Words Describing Tone</label>
-                <input type="text" name="tone" id="tone" required>
-                <label for="images">3 Images You Want in the Commercial</label>
-                <input type="text" name="images" id="images" required>
-                <button type="submit" class="primary">Generate Script</button>
+            <form method="post" onsubmit="showLoading()">
+                <label for="business_type">What kind of business do you run?</label>
+                <select name="business_type" id="business_type" required>
+                    <option value="A">I sell products</option>
+                    <option value="B">I sell services</option>
+                </select>
+                <label for="industry">What industry are you in?</label>
+                <select name="industry" id="industry" required>
+                    {% for key, value in industries.items() %}
+                        <option value="{{ key }}">{{ value }}</option>
+                    {% endfor %}
+                </select>
+                <label for="improvement_area">How can we help you improve business?</label>
+                <select name="improvement_area" id="improvement_area" required>
+                    <option value="raising profits">Raising Profits</option>
+                    <option value="lowering costs">Lowering Costs</option>
+                </select>
+                <label for="c_suiter">Which C-suiter would you like to lead your briefing?</label>
+                <select name="c_suiter" id="c_suiter" required>
+                    {% for key, value in c_suiter_roles.items() %}
+                        <option value="{{ key }}">{{ value.title }}</option>
+                    {% endfor %}
+                </select>
+                <label for="core_info">Any specific business critical issues you need help with?</label>
+                <textarea name="core_info" id="core_info" required></textarea>
+                <label for="email">Enter your email to receive the briefing</label>
+                <input type="email" name="email" id="email" required>
+                <label for="timezone">Enter your timezone</label>
+                <select name="timezone" id="timezone" required>
+                    <option value="America/New_York">Eastern Time</option>
+                    <option value="America/Chicago">Central Time</option>
+                    <option value="America/Denver">Mountain Time</option>
+                    <option value="America/Los_Angeles">Pacific Time</option>
+                    <option value="America/Phoenix">Arizona Time</option>
+                    <option value="America/Anchorage">Alaska Time</option>
+                    <option value="Pacific/Honolulu">Hawaii-Aleutian Time</option>
+                </select>
+                <button type="submit" class="primary">Get Briefing</button>
             </form>
         </main>
 
@@ -160,8 +195,10 @@
     <!-- BG -->
     <div id="bg"></div>
     <div id="loading">
-        <img src="{{ url_for('static', filename='assets/LoadingAsset_Creative1.png') }}" alt="Loading">
-        <span>Your NxNE creative team is working hard on this one!</span>
+        <img src="{{ url_for('static', filename='assets/LoadingAsset_Business1.png') }}" alt="Loading">
+        <span>Your NxNE C-Suite is diving deep...<b>
+            Pro Tip: Click on a suggestion if you want a deeper dive.
+        </b></span>
     </div>
     <!-- Scripts -->
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
