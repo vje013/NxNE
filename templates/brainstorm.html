@@ -145,13 +145,13 @@
 
         <main>
             <form method="post" onsubmit="showLoading()">
-                <label for="role">Select a role:</label>
+                <label for="role">Select the executive in your C-suite you wish to consult:</label>
                 <select name="role" id="role">
                     {% for role_id, role in roles.items() %}
                         <option value="{{ role_id }}">{{ role.title }}</option>
                     {% endfor %}
                 </select>
-                <label for="problem">Describe your problem:</label>
+                <label for="problem">Describe the problem you want to work on:</label>
                 <input type="text" name="problem" id="problem" required>
                 <button type="submit" class="primary">Brainstorm!</button>
             </form>
