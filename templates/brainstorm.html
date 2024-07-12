@@ -7,15 +7,14 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
     <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" /></noscript>
     
-        <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW2XPR1WW8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-KW2XPR1WW8');
-</script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KW2XPR1WW8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KW2XPR1WW8');
+    </script>
     
     <style>
         /* Add this style for the loading screen */
@@ -97,13 +96,18 @@
             margin: 10px 0 5px;
         }
 
-        form input, form select {
+        form input, form select, form textarea {
             margin-bottom: 10px;
             padding: 10px;
             width: calc(100% - 20px);
             max-width: 400px;
             border: 1px solid #ccc;
             border-radius: 4px;
+        }
+
+        form textarea {
+            height: 150px; /* Adjust height as needed */
+            resize: vertical; /* Allow users to resize vertically */
         }
 
         form button {
@@ -152,7 +156,7 @@
                     {% endfor %}
                 </select>
                 <label for="problem">Describe the problem you want to work on:</label>
-                <input type="text" name="problem" id="problem" required>
+                <textarea name="problem" id="problem" placeholder="Describe your problem here, e.g., 'What are some innovative marketing strategies to help my accounting SaaS stand out in a saturated market?'" required onfocus="clearPlaceholder(this)" onblur="restorePlaceholder(this)"></textarea>
                 <button type="submit" class="primary">Brainstorm!</button>
             </form>
         </main>
@@ -168,9 +172,7 @@
     <div id="bg"></div>
     <div id="loading">
         <img src="{{ url_for('static', filename='assets/LoadingAsset_Business1.png') }}" alt="Loading">
-        <span>Your NxNE C-Suite is diving deep...<b>
-            Pro Tip: Click on a suggestion if you want a deeper dive.
-        </b></span>
+        <span>Your NxNE C-Suite is diving deep...<b> Pro Tip: Click on a suggestion if you want a deeper dive.</b></span>
     </div>
     <!-- Scripts -->
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
@@ -181,6 +183,16 @@
     <script>
         function showLoading() {
             document.getElementById('loading').style.display = 'block';
+        }
+        
+        function clearPlaceholder(element) {
+            element.placeholder = '';
+        }
+
+        function restorePlaceholder(element) {
+            if (element.value === '') {
+                element.placeholder = 'Describe your problem here, e.g., "Our customer retention rates are dropping."';
+            }
         }
     </script>
 </body>
