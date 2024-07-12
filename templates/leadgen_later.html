@@ -6,17 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
     <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" /></noscript>
-    
-            <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW2XPR1WW8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-KW2XPR1WW8');
-</script>
-
     <style>
         #loading {
             display: none;
@@ -34,7 +23,7 @@
             padding-top: 20%;
         }
         #loading img {
-            max-width: 1000px;
+            max-width: 500px;
             margin-bottom: 20px;
         }
         #loading span {
@@ -50,8 +39,7 @@
     <div id="wrapper">
         <!-- Header -->
         <header id="header">
-            <h1>Lead Generator</h1>
-            <h2>Summer 2024</h2>
+            <h1>Lead Generation</h1>
             <nav>
                 <ul>
                     <li><a href="/">Home</a></li>
@@ -62,6 +50,25 @@
                 </ul>
             </nav>
         </header>
+
+        <main>
+            <form action="/leadgen" method="POST" onsubmit="showLoading()">
+                <label for="business_need">Business Need:</label>
+                <select name="business_need" id="business_need">
+                    <option value="Accounting">Accounting</option>
+                    <option value="CRMs">CRMs</option>
+                    <option value="ERP">ERP</option>
+                    <option value="Project Management">Project Management</option>
+                    <option value="HR">HR</option>
+                    <option value="Payroll">Payroll</option>
+                    <option value="Supply Chain and Inventory">Supply Chain and Inventory</option>
+                    <option value="Sales">Sales</option>
+                    <option value="Data">Data</option>
+                    <option value="Marketing">Marketing</option>
+                </select>
+                <button type="submit" class="primary">Generate Leads</button>
+            </form>
+        </main>
 
         <!-- Footer -->
         <footer id="footer">
