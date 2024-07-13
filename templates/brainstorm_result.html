@@ -46,11 +46,11 @@
         }
         .suggestion {
             cursor: pointer;
-            color: #000; /* Change link color to black */
-            text-decoration: none; /* Remove underline */
+            color: #000;
+            text-decoration: none;
         }
         .suggestion:hover {
-            color: #333; /* Darker shade for hover */
+            color: #333;
         }
         #loading {
             display: none;
@@ -92,6 +92,7 @@
 <span class="suggestion" onclick="diveDeeper('{{ suggestion }}')">{{ suggestion }}</span><br>
 {% endfor %}
                     </pre>
+                    <div id="deeper-dive"></div>
                     <div class="actions">
                         <a href="/brainstorm" class="button">Back to Brainstorm</a>
                     </div>
@@ -152,12 +153,11 @@
         }
 
         async function diveDeeper(suggestion) {
-            console.log("Suggestion clicked:", suggestion); // Debugging log
+            console.log("Suggestion clicked:", suggestion);
             var role = "{{ role.title }}";
             var problem = "{{ problem }}";
             var query = `dive deeper into how we can solve ${problem} using ${suggestion}`;
 
-            // Show loading screen
             document.getElementById('loading').style.display = 'block';
 
             try {
@@ -169,19 +169,15 @@
                 });
 
                 if (response.data && response.data.suggestions) {
-                    console.log("Response received:", response.data); // Debugging log
-                    // Hide loading screen
+                    console.log("Response received:", response.data);
                     document.getElementById('loading').style.display = 'none';
-                    // Redirect to the dive deeper results page
-                    window.location.href = '/dive_deeper_results';
+                    document.getElementById('deeper-dive').innerHTML = response.data.suggestions.join('<br>');
                 } else {
                     console.error("No suggestions found in the response:", response.data);
-                    // Hide loading screen in case of error
                     document.getElementById('loading').style.display = 'none';
                 }
             } catch (error) {
                 console.error("Error during OpenAI API request:", error.response ? error.response.data : error.message);
-                // Hide loading screen in case of error
                 document.getElementById('loading').style.display = 'none';
             }
         }
