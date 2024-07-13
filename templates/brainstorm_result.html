@@ -86,7 +86,7 @@
                 <div class="inner">
                     <h1>Brainstorm Results</h1>
                     <h2>Your {{ role.title }}'s suggestions for: {{ problem }}</h2>
-                    <button class="button" onclick="readAloud()">Listen (Coming Soon)</button>
+                    <button class="button" onclick="readAloud()">⏯ (Coming Soon)</button>
                     <pre>
 {% for suggestion in suggestions.split('\n') %}
 <span class="suggestion" onclick="diveDeeper('{{ suggestion }}')">{{ suggestion }}</span><br>
