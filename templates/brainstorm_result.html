@@ -86,7 +86,7 @@
                 <div class="inner">
                     <h1>Brainstorm Results</h1>
                     <h2>Your {{ role.title }}'s suggestions for: {{ problem }}</h2>
-                    <button class="button" onclick="readAloud()">Hear it from your AI Exec's Mouth</button>
+                    <button class="button" onclick="readAloud()">Listen</button>
                     <pre>
 {% for suggestion in suggestions.split('\n') %}
 <span class="suggestion" onclick="diveDeeper('{{ suggestion }}')">{{ suggestion }}</span><br>
@@ -124,10 +124,10 @@
 
         async function readAloud() {
             const suggestions = `{% for suggestion in suggestions.split('\n') %}{{ suggestion }} {% endfor %}`;
-            const response = await axios.post('https://api.openai.com/v1/audio/createSpeech', {
-                model: 'text-to-speech-001',
+            const response = await axios.post('https://api.openai.com/v1/audio/speech', {
+                model: 'tts-1',
                 input: suggestions,
-                voice: 'Alloy'
+                voice: 'alloy'
             }, {
                 headers: {
                     'Authorization': `Bearer ${openaiApiKey}`,
