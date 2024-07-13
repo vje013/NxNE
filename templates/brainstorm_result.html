@@ -8,14 +8,14 @@
     <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" /></noscript>
     
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW2XPR1WW8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KW2XPR1WW8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-KW2XPR1WW8');
-</script>
+      gtag('config', 'G-KW2XPR1WW8');
+    </script>
     
     <style>
         pre {
@@ -86,6 +86,7 @@
                 <div class="inner">
                     <h1>Brainstorm Results</h1>
                     <h2>Your {{ role.title }}'s suggestions for: {{ problem }}</h2>
+                    <button class="button" onclick="readAloud()">Read Aloud</button>
                     <pre>
 {% for suggestion in suggestions.split('\n') %}
 <span class="suggestion" onclick="diveDeeper('{{ suggestion }}')">{{ suggestion }}</span><br>
@@ -117,7 +118,28 @@
     <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/util.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
+        const openaiApiKey = 'YOUR_OPENAI_API_KEY';
+
+        async function readAloud() {
+            const suggestions = `{% for suggestion in suggestions.split('\n') %}{{ suggestion }} {% endfor %}`;
+            const response = await axios.post('https://api.openai.com/v1/audio/createSpeech', {
+                model: 'text-to-speech-001',
+                input: suggestions,
+                voice: 'voice_name' // Specify the voice name here
+            }, {
+                headers: {
+                    'Authorization': `Bearer ${openaiApiKey}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const audioUrl = response.data.audio_url;
+            const audio = new Audio(audioUrl);
+            audio.play();
+        }
+
         function diveDeeper(suggestion) {
             var role = "{{ role.title }}";
             var problem = "{{ problem }}";
