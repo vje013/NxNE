@@ -153,7 +153,7 @@
         }
 
         async function diveDeeper(suggestion) {
-            console.log("Suggestion clicked:", suggestion);
+            console.log("Suggestion clicked:", suggestion); // Debugging log
             var role = "{{ role.title }}";
             var problem = "{{ problem }}";
             var query = `dive deeper into how we can solve ${problem} using ${suggestion}`;
@@ -169,9 +169,9 @@
                 });
 
                 if (response.data && response.data.suggestions) {
-                    console.log("Response received:", response.data);
+                    console.log("Response received:", response.data); // Debugging log
                     document.getElementById('loading').style.display = 'none';
-                    document.getElementById('deeper-dive').innerHTML = response.data.suggestions.join('<br>');
+                    document.getElementById('deeper-dive').innerHTML = response.data.suggestions.map(s => `<span class="suggestion" onclick="diveDeeper('${s}')">${s}</span><br>`).join('');
                 } else {
                     console.error("No suggestions found in the response:", response.data);
                     document.getElementById('loading').style.display = 'none';

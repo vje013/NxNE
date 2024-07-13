@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Dive Deeper Results</title>
+    <title>Brainstorm Results</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
@@ -46,11 +46,11 @@
         }
         .suggestion {
             cursor: pointer;
-            color: #000; /* Change link color to black */
-            text-decoration: none; /* Remove underline */
+            color: #000;
+            text-decoration: none;
         }
         .suggestion:hover {
-            color: #333; /* Darker shade for hover */
+            color: #333;
         }
         #loading {
             display: none;
@@ -84,13 +84,15 @@
             </div>
             <div class="content">
                 <div class="inner">
-                    <h1>Dive Deeper Results</h1>
-                    <h2>Deeper insights for: {{ problem }}</h2>
+                    <h1>Brainstorm Results</h1>
+                    <h2>Your {{ role.title }}'s suggestions for: {{ problem }}</h2>
+                    <button class="button" onclick="readAloud()">Listen (Coming Soon)</button>
                     <pre>
-{% for suggestion in suggestions %}
+{% for suggestion in suggestions.split('\n') %}
 <span class="suggestion" onclick="diveDeeper('{{ suggestion }}')">{{ suggestion }}</span><br>
 {% endfor %}
                     </pre>
+                    <div id="deeper-dive"></div>
                     <div class="actions">
                         <a href="/brainstorm" class="button">Back to Brainstorm</a>
                     </div>
@@ -121,13 +123,41 @@
     <script>
         const openaiApiKey = '{{ creds.openai.api_key }}';
 
+        async function readAloud() {
+            const suggestions = `{% for suggestion in suggestions.split('\n') %}{{ suggestion }} {% endfor %}`;
+            console.log("Sending request to OpenAI TTS API with suggestions:", suggestions);
+
+            try {
+                const response = await axios.post('https://api.openai.com/v1/audio/speech', {
+                    model: 'tts-1',
+                    input: suggestions,
+                    voice: 'alloy'
+                }, {
+                    headers: {
+                        'Authorization': `Bearer ${openaiApiKey}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (response.data && response.data.audio_url) {
+                    const audioUrl = response.data.audio_url;
+                    console.log("Audio URL received:", audioUrl);
+                    const audio = new Audio(audioUrl);
+                    audio.play();
+                } else {
+                    console.error("No audio URL found in the response:", response.data);
+                }
+            } catch (error) {
+                console.error("Error during OpenAI TTS request:", error.response ? error.response.data : error.message);
+            }
+        }
+
         async function diveDeeper(suggestion) {
             console.log("Suggestion clicked:", suggestion); // Debugging log
             var role = "{{ role.title }}";
             var problem = "{{ problem }}";
             var query = `dive deeper into how we can solve ${problem} using ${suggestion}`;
 
-            // Show loading screen
             document.getElementById('loading').style.display = 'block';
 
             try {
@@ -140,16 +170,14 @@
 
                 if (response.data && response.data.suggestions) {
                     console.log("Response received:", response.data); // Debugging log
-                    // Hide loading screen
                     document.getElementById('loading').style.display = 'none';
-                    // Update the suggestions
-                    document.querySelector('pre').innerHTML = response.data.suggestions.map(s => `<span class="suggestion" onclick="diveDeeper('${s}')">${s}</span><br>`).join('');
+                    document.getElementById('deeper-dive').innerHTML = response.data.suggestions.map(s => `<span class="suggestion" onclick="diveDeeper('${s}')">${s}</span><br>`).join('');
                 } else {
                     console.error("No suggestions found in the response:", response.data);
+                    document.getElementById('loading').style.display = 'none';
                 }
             } catch (error) {
                 console.error("Error during OpenAI API request:", error.response ? error.response.data : error.message);
-                // Hide loading screen in case of error
                 document.getElementById('loading').style.display = 'none';
             }
         }
