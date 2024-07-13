@@ -152,6 +152,7 @@
         }
 
         async function diveDeeper(suggestion) {
+            console.log("Suggestion clicked:", suggestion); // Debugging log
             var role = "{{ role.title }}";
             var problem = "{{ problem }}";
             var query = `dive deeper into how we can solve ${problem} using ${suggestion}`;
@@ -177,6 +178,8 @@
                 }
             } catch (error) {
                 console.error("Error during OpenAI API request:", error.response ? error.response.data : error.message);
+                // Hide loading screen in case of error
+                document.getElementById('loading').style.display = 'none';
             }
         }
     </script>
