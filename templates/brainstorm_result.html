@@ -151,42 +151,33 @@
             }
         }
 
-        function diveDeeper(suggestion) {
+        async function diveDeeper(suggestion) {
             var role = "{{ role.title }}";
             var problem = "{{ problem }}";
+            var query = `dive deeper into how we can solve ${problem} using ${suggestion}`;
 
             // Show loading screen
             document.getElementById('loading').style.display = 'block';
 
-            // Create a form to submit
-            var form = document.createElement('form');
-            form.method = 'POST';
-            form.action = '/dive_deeper';
+            try {
+                const response = await axios.post('/dive_deeper', {
+                    role: role,
+                    problem: problem,
+                    suggestion: suggestion,
+                    query: query
+                });
 
-            // Add role field
-            var roleField = document.createElement('input');
-            roleField.type = 'hidden';
-            roleField.name = 'role';
-            roleField.value = role;
-            form.appendChild(roleField);
-
-            // Add problem field
-            var problemField = document.createElement('input');
-            problemField.type = 'hidden';
-            problemField.name = 'problem';
-            problemField.value = problem;
-            form.appendChild(problemField);
-
-            // Add suggestion field
-            var suggestionField = document.createElement('input');
-            suggestionField.type = 'hidden';
-            suggestionField.name = 'suggestion';
-            suggestionField.value = suggestion;
-            form.appendChild(suggestionField);
-
-            // Add the form to the body and submit
-            document.body.appendChild(form);
-            form.submit();
+                if (response.data && response.data.suggestions) {
+                    // Hide loading screen
+                    document.getElementById('loading').style.display = 'none';
+                    // Update the suggestions
+                    document.querySelector('pre').innerHTML = response.data.suggestions.map(s => `<span class="suggestion" onclick="diveDeeper('${s}')">${s}</span><br>`).join('');
+                } else {
+                    console.error("No suggestions found in the response:", response.data);
+                }
+            } catch (error) {
+                console.error("Error during OpenAI API request:", error.response ? error.response.data : error.message);
+            }
         }
     </script>
 </body>
