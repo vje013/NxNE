@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Brainstorm Results</title>
+    <title>Dive Deeper Results</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
@@ -84,11 +84,10 @@
             </div>
             <div class="content">
                 <div class="inner">
-                    <h1>Brainstorm Results</h1>
-                    <h2>Your {{ role.title }}'s suggestions for: {{ problem }}</h2>
-                    <button class="button" onclick="readAloud()">Listen (Coming Soon)</button>
+                    <h1>Dive Deeper Results</h1>
+                    <h2>Deeper insights for: {{ problem }}</h2>
                     <pre>
-{% for suggestion in suggestions.split('\n') %}
+{% for suggestion in suggestions %}
 <span class="suggestion" onclick="diveDeeper('{{ suggestion }}')">{{ suggestion }}</span><br>
 {% endfor %}
                     </pre>
@@ -122,35 +121,6 @@
     <script>
         const openaiApiKey = '{{ creds.openai.api_key }}';
 
-        async function readAloud() {
-            const suggestions = `{% for suggestion in suggestions.split('\n') %}{{ suggestion }} {% endfor %}`;
-            console.log("Sending request to OpenAI TTS API with suggestions:", suggestions);
-
-            try {
-                const response = await axios.post('https://api.openai.com/v1/audio/speech', {
-                    model: 'tts-1',
-                    input: suggestions,
-                    voice: 'alloy'
-                }, {
-                    headers: {
-                        'Authorization': `Bearer ${openaiApiKey}`,
-                        'Content-Type': 'application/json'
-                    }
-                });
-
-                if (response.data && response.data.audio_url) {
-                    const audioUrl = response.data.audio_url;
-                    console.log("Audio URL received:", audioUrl);
-                    const audio = new Audio(audioUrl);
-                    audio.play();
-                } else {
-                    console.error("No audio URL found in the response:", response.data);
-                }
-            } catch (error) {
-                console.error("Error during OpenAI TTS request:", error.response ? error.response.data : error.message);
-            }
-        }
-
         async function diveDeeper(suggestion) {
             console.log("Suggestion clicked:", suggestion); // Debugging log
             var role = "{{ role.title }}";
@@ -172,8 +142,8 @@
                     console.log("Response received:", response.data); // Debugging log
                     // Hide loading screen
                     document.getElementById('loading').style.display = 'none';
-                    // Redirect to the dive deeper results page
-                    window.location.href = '/dive_deeper_results';
+                    // Update the suggestions
+                    document.querySelector('pre').innerHTML = response.data.suggestions.map(s => `<span class="suggestion" onclick="diveDeeper('${s}')">${s}</span><br>`).join('');
                 } else {
                     console.error("No suggestions found in the response:", response.data);
                     // Hide loading screen in case of error
