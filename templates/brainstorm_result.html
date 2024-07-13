@@ -120,14 +120,14 @@
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        const openaiApiKey = 'YOUR_OPENAI_API_KEY';
+        const openaiApiKey = 'creds.openai.api_key';
 
         async function readAloud() {
             const suggestions = `{% for suggestion in suggestions.split('\n') %}{{ suggestion }} {% endfor %}`;
             const response = await axios.post('https://api.openai.com/v1/audio/createSpeech', {
                 model: 'text-to-speech-001',
                 input: suggestions,
-                voice: 'voice_name' // Specify the voice name here
+                voice: 'Alloy'
             }, {
                 headers: {
                     'Authorization': `Bearer ${openaiApiKey}`,
