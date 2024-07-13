@@ -124,7 +124,7 @@
 
         async function readAloud() {
             const suggestions = `{% for suggestion in suggestions.split('\n') %}{{ suggestion }} {% endfor %}`;
-            console.log("Sending request to OpenAI TTS API...");
+            console.log("Sending request to OpenAI TTS API with suggestions:", suggestions);
 
             try {
                 const response = await axios.post('https://api.openai.com/v1/audio/speech', {
