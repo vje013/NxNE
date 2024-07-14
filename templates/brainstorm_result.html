@@ -122,11 +122,11 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
         const openaiApiKey = '{{ creds.openai.api_key }}';
-
+    
         async function readAloud() {
             const suggestions = `{% for suggestion in suggestions.split('\n') %}{{ suggestion }} {% endfor %}`;
             console.log("Sending request to OpenAI TTS API with suggestions:", suggestions);
-
+    
             try {
                 const response = await axios.post('https://api.openai.com/v1/audio/speech', {
                     model: 'tts-1',
@@ -138,7 +138,7 @@
                         'Content-Type': 'application/json'
                     }
                 });
-
+    
                 if (response.data && response.data.audio_url) {
                     const audioUrl = response.data.audio_url;
                     console.log("Audio URL received:", audioUrl);
@@ -151,15 +151,15 @@
                 console.error("Error during OpenAI TTS request:", error.response ? error.response.data : error.message);
             }
         }
-
+    
         async function diveDeeper(suggestion) {
             console.log("Suggestion clicked:", suggestion); // Debugging log
             var role = "{{ role.title }}";
             var problem = "{{ problem }}";
             var query = `dive deeper into how we can solve ${problem} using ${suggestion}`;
-
+    
             document.getElementById('loading').style.display = 'block';
-
+    
             try {
                 const response = await axios.post('/dive_deeper', {
                     role: role,
@@ -167,11 +167,13 @@
                     suggestion: suggestion,
                     query: query
                 });
-
+    
                 if (response.data && response.data.suggestions) {
                     console.log("Response received:", response.data); // Debugging log
                     document.getElementById('loading').style.display = 'none';
-                    document.getElementById('deeper-dive').innerHTML = response.data.suggestions.map(s => `<span class="suggestion" onclick="diveDeeper('${s}')">${s}</span><br>`).join('');
+    
+                    // Redirect to dive_deeper_results page
+                    window.location.href = `/dive_deeper_results?role=${role}&problem=${problem}&suggestion=${encodeURIComponent(suggestion)}&deep_suggestions=${encodeURIComponent(JSON.stringify(response.data.suggestions))}`;
                 } else {
                     console.error("No suggestions found in the response:", response.data);
                     document.getElementById('loading').style.display = 'none';
@@ -182,5 +184,6 @@
             }
         }
     </script>
+ 
 </body>
 </html>
