@@ -35,7 +35,7 @@
         }
 
         #loading img {
-            max-width: 150px;
+            max-width: 80px;
             margin-bottom: 20px;
         }
 
@@ -79,35 +79,24 @@
             padding: 20px 0;
         }
 
-        form {
+        .options {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        form label {
-            margin: 10px 0 5px;
-        }
-
-        form input {
-            margin-bottom: 10px;
+        .option-button {
+            margin-top: 10px;
             padding: 10px;
-            width: calc(100% - 20px);
-            max-width: 400px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        form button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            background-color: #007BFF;
+            background-color: #007bff;
             color: white;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
+            text-align: center;
         }
 
-        form button:hover {
+        .option-button:hover {
             background-color: #0056b3;
         }
 
@@ -146,7 +135,7 @@
             <div class="container">
                 <img src="{{ url_for('static', filename='assets/creativeteam1.png') }}" alt="Creative Team" class="image">
                 <div class="dialogue">
-                    <p>Hey! I work here in your creative department. Your CMO and Creative Director are ready to get to work!</p>
+                    <p>Hey! I work here in your creative department. Your CMO and Creative Director are ready to create your next masterpiece!</p>
                     <p>What should they work on?</p>
                     <div class="options">
                         <button class="option-button" onclick="chooseOption('Taglines')">Taglines</button>
