@@ -7,30 +7,15 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
     <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" /></noscript>
     <style>
-        #loading {
-            display: none;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(255, 255, 255, 0.8);
-            z-index: 2;
+        body {
             text-align: center;
-            font-size: 24px;
-            padding-top: 20%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
         }
-        #loading img {
-            max-width: 500px;
-            margin-bottom: 20px;
-        }
-        #loading span {
-            display: block;
-            margin-top: 10px;
-            font-size: 24px;
-            color: #000;
+        img {
+            max-width: 100%;
+            height: auto;
         }
     </style>
 </head>
@@ -39,7 +24,7 @@
     <div id="wrapper">
         <!-- Header -->
         <header id="header">
-            <h1>Lead Generation</h1>
+            <h1>Lead Generator</h1>
             <nav>
                 <ul>
                     <li><a href="/">Home</a></li>
@@ -52,22 +37,7 @@
         </header>
 
         <main>
-            <form action="/leadgen" method="POST" onsubmit="showLoading()">
-                <label for="business_need">Business Need:</label>
-                <select name="business_need" id="business_need">
-                    <option value="Accounting">Accounting</option>
-                    <option value="CRMs">CRMs</option>
-                    <option value="ERP">ERP</option>
-                    <option value="Project Management">Project Management</option>
-                    <option value="HR">HR</option>
-                    <option value="Payroll">Payroll</option>
-                    <option value="Supply Chain and Inventory">Supply Chain and Inventory</option>
-                    <option value="Sales">Sales</option>
-                    <option value="Data">Data</option>
-                    <option value="Marketing">Marketing</option>
-                </select>
-                <button type="submit" class="primary">Generate Leads</button>
-            </form>
+            <img src="{{ url_for('static', filename='assets/ConstructionBanner.png') }}" alt="Construction Banner">
         </main>
 
         <!-- Footer -->
@@ -78,20 +48,128 @@
 
     <!-- BG -->
     <div id="bg"></div>
-    <div id="loading">
-        <img src="{{ url_for('static', filename='assets/LoadingAsset_Business1.png') }}" alt="Loading">
-        <span>Generating leads...</span>
-    </div>
     <!-- Scripts -->
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/util.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-    <script>
-        function showLoading() {
-            document.getElementById('loading').style.display = 'block';
-        }
-    </script>
 </body>
 </html>
+
+
+
+###BEGIN LEAD GEN LOGIC###
+
+api_key = creds.proxycurl.api_key
+headers = {'Authorization': f'Bearer {api_key}'}
+api_endpoint = 'https://nubela.co/proxycurl/api/v2/search/person'
+
+# Function to get user input for the business need they are targeting
+def update_params_with_business_need(params, business_need):
+    params.update({
+        'industries': f'NOT {business_need}',
+        'current_job_description': f'NOT {business_need}',
+        'summary': f'NOT {business_need}',
+        'past_job_description': f'NOT {business_need}',
+    })
+    return params
+
+# Function to make API request and get the first round of profiles
+def get_first_round_profiles(api_endpoint, headers, params):
+    profiles = []
+    next_page = api_endpoint
+    while next_page:
+        response = requests.get(next_page, headers=headers, params=params)
+        data = response.json()
+        profiles.extend(data.get('results', []))
+        next_page = data.get('next_page')
+    return profiles
+
+# Function to filter profiles based on specific role titles
+def filter_profiles_by_role_titles(profiles, desired_titles):
+    filtered_profiles = [profile for profile in profiles if profile['current_role_title'] in desired_titles]
+    return filtered_profiles
+
+# Function to check if a company has moved up in size group in the last 3 months
+def has_company_moved_up_recently(company):
+    current_date = datetime.now()
+    three_months_ago = current_date - timedelta(days=90)
+    
+    company_size_history = {
+        'CompanyA': [('2023-01-01', 'Group 1'), ('2023-04-01', 'Group 2')],
+    }
+    
+    if company in company_size_history:
+        history = company_size_history[company]
+        for date, size_group in history:
+            if datetime.strptime(date, '%Y-%m-%d') > three_months_ago and size_group in ['Group 2', 'Group 3', 'Group 4']:
+                return True
+    return False
+
+# Function to score profiles based on the absence of business_need in different fields
+def score_profiles(profiles, business_need):
+    scored_profiles = []
+    for profile in profiles:
+        score = 0
+        if business_need not in profile.get('industries', ''):
+            score += 2
+        if business_need not in profile.get('current_job_description', ''):
+            score += 2
+        if business_need not in profile.get('summary', ''):
+            score += 1
+        if business_need not in profile.get('past_job_description', ''):
+            score += 1
+        
+        company = profile.get('current_company_name', '')
+        if has_company_moved_up_recently(company):
+            score += 3
+
+        scored_profiles.append((profile, score))
+    return scored_profiles
+
+# Function to categorize profiles into tiers based on their scores and recent company size changes
+def categorize_profiles_by_score(scored_profiles):
+    scored_profiles.sort(key=lambda x: x[1], reverse=True)
+    
+    whales = [profile for profile, score in scored_profiles if has_company_moved_up_recently(profile.get('current_company_name', ''))]
+    hot_leads = [profile for profile, score in scored_profiles if score == 6 and profile not in whales]
+    warm_leads = [profile for profile, score in scored_profiles if score == 5 and profile not in whales]
+    potential_leads = [profile for profile, score in scored_profiles if score == 4 and profile not in whales]
+    
+    return whales, hot_leads, warm_leads, potential_leads
+
+@app.route('/leadgen', methods=['GET', 'POST'])
+def leadgen():
+    if request.method == 'POST':
+        business_need = request.form['business_need']
+        params = {
+            'country': 'US',
+        }
+        params = update_params_with_business_need(params, business_need)
+
+        # Log parameters
+        app.logger.info(f"Params: {params}")
+
+        first_round_profiles = get_first_round_profiles(api_endpoint, headers, params)
+        
+        # Log the number of profiles fetched
+        app.logger.info(f"First round profiles count: {len(first_round_profiles)}")
+        
+        desired_titles = ['founder', 'CEO', 'Sales', 'COO', 'CTO', 'BDO', 'SDR']
+        second_round_profiles = filter_profiles_by_role_titles(first_round_profiles, desired_titles)
+        
+        # Log the number of profiles after filtering
+        app.logger.info(f"Second round profiles count: {len(second_round_profiles)}")
+        
+        scored_profiles = score_profiles(second_round_profiles, business_need)
+        
+        # Log the scored profiles
+        app.logger.info(f"Scored profiles: {scored_profiles}")
+        
+        whales, hot_leads, warm_leads, potential_leads = categorize_profiles_by_score(scored_profiles)
+        
+        return render_template('leadgen_results.html', whales=whales, hot_leads=hot_leads, warm_leads=warm_leads, potential_leads=potential_leads)
+    return render_template('leadgen.html')
+
+###END LEAD GEN LOGIC###

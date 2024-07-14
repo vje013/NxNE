@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>NxNE MarketMagic</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="path/to/main.css" />
+    <noscript><link rel="stylesheet" href="path/to/noscript.css" /></noscript>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KW2XPR1WW8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-KW2XPR1WW8');
+    </script>
+    
+    <style>
+        #loading {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 2;
+            text-align: center;
+            font-size: 24px;
+            padding-top: 20%;
+        }
+
+        #loading img {
+            max-width: 500px;
+            margin-bottom: 20px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #wrapper {
+            max-width: 100%;
+            padding: 0 15px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin: 10px 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        main {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        form label {
+            margin: 10px 0 5px;
+        }
+
+        form input {
+            margin-bottom: 10px;
+            padding: 10px;
+            width: calc(100% - 20px);
+            max-width: 400px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        form button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Header -->
+        <header id="header">
+            <h1>NxNE MarketMagic</h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/Users/MacBook/Desktop/NxNE/tagline_generator/templates/index.html">Tagline Generator</a></li>
+                    <li><a href="/brainstorm">Brainstorm</a></li>
+                    <li><a href="/coming_soon">Coming Soon</a></li>
+                    <li><a href="/waitlist">Waitlist</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <div class="container">
+                <img src="/Users/MacBook/Desktop/NxNE/tagline_generator/static/assets/creativeteam1.png" alt="Creative Team" class="image">
+                <div class="dialogue">
+                    <p>Hey! I work here in your creative department. Your CMO and Creative Director are ready to get to work!</p>
+                    <p>What should they work on?</p>
+                    <div class="options">
+                        <button class="option-button" onclick="chooseOption('Taglines')">Taglines</button>
+                        <button class="option-button" onclick="chooseOption('Commercial Scripts')">Commercial Scripts</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <p>&copy; NxNE2024@gmail.com</p>
+        </footer>
+
+    </div>
+
+    <!-- BG -->
+    <div id="bg"></div>
+    <div id="loading">
+        <img src="path/to/assets/LoadingAsset_Creative1.png" alt="Loading">
+        <span>Your NxNE creative team is working hard on this one!</span>
+    </div>
+    <!-- Scripts -->
+    <script src="path/to/jquery.min.js"></script>
+    <script src="path/to/browser.min.js"></script>
+    <script src="path/to/breakpoints.min.js"></script>
+    <script src="path/to/util.js"></script>
+    <script src="path/to/main.js"></script>
+    <script>
+        function chooseOption(option) {
+            if (option === 'Taglines') {
+                window.location.href = '/Users/MacBook/Desktop/NxNE/tagline_generator/templates/index.html';
+            } else if (option === 'Commercial Scripts') {
+                window.location.href = '/Users/MacBook/Desktop/NxNE/tagline_generator/templates/script_generator.html';
+            }
+        }
+
+        function showLoading() {
+            document.getElementById('loading').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
