@@ -1,11 +1,11 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>MVP: MarketMagic</title>
+    <title>NxNE MarketMagic</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="path/to/main.css" />
-    <noscript><link rel="stylesheet" href="path/to/noscript.css" /></noscript>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+    <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" /></noscript>
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KW2XPR1WW8"></script>
@@ -123,7 +123,15 @@
 
         <!-- Header -->
         <header id="header">
-            <h1>NxNE MarketMagic</h1>
+            <div class="logo">
+                <span class="icon fa-tachometer-alt"></span>
+            </div>
+            <div class="content">
+                <div class="inner">
+                    <h1>NxNE</h1>
+                    <p>Let's grow together.</p>
+                </div>
+            </div>
             <nav>
                 <ul>
                     <li><a href="/">Home</a></li>
@@ -136,7 +144,7 @@
 
         <main>
             <div class="container">
-                <img src="/Users/MacBook/Desktop/NxNE/tagline_generator/static/assets/creativeteam1.png" alt="Creative Team" class="image">
+                <img src="{{ url_for('static', filename='assets/creativeteam1.png') }}" alt="Creative Team" class="image">
                 <div class="dialogue">
                     <p>Hey! I work here in your creative department. Your CMO and Creative Director are ready to get to work!</p>
                     <p>What should they work on?</p>
@@ -158,21 +166,21 @@
     <!-- BG -->
     <div id="bg"></div>
     <div id="loading">
-        <img src="path/to/assets/LoadingAsset_Creative1.png" alt="Loading">
+        <img src="{{ url_for('static', filename='assets/LoadingAsset_Creative1.png') }}" alt="Loading">
         <span>Your NxNE creative team is working hard on this one!</span>
     </div>
     <!-- Scripts -->
-    <script src="path/to/jquery.min.js"></script>
-    <script src="path/to/browser.min.js"></script>
-    <script src="path/to/breakpoints.min.js"></script>
-    <script src="path/to/util.js"></script>
-    <script src="path/to/main.js"></script>
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/util.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     <script>
         function chooseOption(option) {
             if (option === 'Taglines') {
-                window.location.href = '/Users/MacBook/Desktop/NxNE/tagline_generator/templates/index.html';
+                window.location.href = "{{ url_for('tagline_generator') }}";
             } else if (option === 'Commercial Scripts') {
-                window.location.href = '/Users/MacBook/Desktop/NxNE/tagline_generator/templates/script_generator.html';
+                window.location.href = "{{ url_for('script_generator') }}";
             }
         }
 
