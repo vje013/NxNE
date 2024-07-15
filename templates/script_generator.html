@@ -7,15 +7,14 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
     <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" /></noscript>
     
-        <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW2XPR1WW8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-KW2XPR1WW8');
-</script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KW2XPR1WW8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KW2XPR1WW8');
+    </script>
     
     <style>
         #loading {
@@ -138,13 +137,13 @@
         <main>
             <form method="post" action="/script_generator" onsubmit="showLoading()">
                 <label for="company_product_name">Company & Product Name</label>
-                <input type="text" name="company_product_name" id="company_product_name" required>
+                <input type="text" name="company_product_name" id="company_product_name" placeholder="Lucid Air" required>
                 <label for="user_prompt">One/two sentence description of the Commercial</label>
-                <input type="text" name="user_prompt" id="user_prompt" required>
+                <input type="text" name="user_prompt" id="user_prompt" placeholder="A moon rover breaks down, stranding 3 astronauts. A Lucid Air shows up to save them." required>
                 <label for="tone">3 Words Describing Tone</label>
-                <input type="text" name="tone" id="tone" required>
+                <input type="text" name="tone" id="tone" placeholder="futuristic, elegant, sci-fi" required>
                 <label for="images">3 Images You Want in the Commercial</label>
-                <input type="text" name="images" id="images" required>
+                <input type="text" name="images" id="images" placeholder="Earth in background, dark side of moon, lunar dust" required>
                 <button type="submit" class="primary">Generate Script</button>
             </form>
         </main>
