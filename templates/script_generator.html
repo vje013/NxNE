@@ -126,8 +126,8 @@
             <nav>
                 <ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="{{ url_for('tagline_generator') }}">Tagline Generator</a></li>
-                    <li><a href="/brainstorm">Brainstorm</a></li>
+                    <li><a href="{{ url_for('brainstorm') }}">MVP: Brainstorm</a></li>
+                    <li><a href="{{ url_for('marketmagic') }}">MVP: MarketMagic</a></li>
                     <li><a href="{{ url_for('Coming_Soon') }}">Coming Soon</a></li>
                     <li><a href="{{ url_for('waitlist') }}">Waitlist</a></li>
                 </ul>
@@ -146,8 +146,8 @@
                 <input type="text" name="images" id="images" placeholder="Earth in background, dark side of moon, lunar dust" required>
                 <label for="budget">Budget</label>
                 <select name="budget" id="budget" required>
-                    <option value="no_budget">$No Budget</option>
-                    <option value="1-10000">$1 - $10,000</option>
+                    <option value="no_budget">No Budget</option>
+                    <option value="1-10000">$1,000 - $10,000</option>
                     <option value="10000-100000">$10,000 - $100,000</option>
                     <option value="100000-1000000">$100,000 - $1,000,000</option>
                 </select>
