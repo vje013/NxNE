@@ -13,7 +13,6 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'G-KW2XPR1WW8');
     </script>
     
@@ -184,7 +183,7 @@
             document.getElementById('loading').style.display = 'block';
         }
 
-        document.addEventListener('DOMContentLoaded', (event) => {
+        document.addEventListener('DOMContentLoaded', () => {
             const examples = [
                 "Our customer retention rates are dropping in the retail sector.",
                 "We need to improve our social media presence for our biotech startup.",
@@ -207,22 +206,10 @@
                 "We need a better pricing strategy for our custom-made NPU's.",
                 "What's a long-term growth strategy for my medicinal marijuana delivery company that's local to Southern California?"
             ];
-            
-            const randomExample = examples[Math.floor(Math.random() * examples.length)];
+
             const problemInput = document.getElementById('problem');
-            problemInput.placeholder = randomExample;
-
-            problemInput.addEventListener('focus', () => {
-                if (problemInput.value === '') {
-                    problemInput.placeholder = '';
-                }
-            });
-
-            problemInput.addEventListener('blur', () => {
-                if (problemInput.value === '') {
-                    problemInput.placeholder = randomExample;
-                }
-            });
+            const randomExample = examples[Math.floor(Math.random() * examples.length)];
+            problemInput.setAttribute('placeholder', randomExample);
         });
     </script>
 </body>
