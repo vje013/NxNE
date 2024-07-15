@@ -141,9 +141,8 @@
         </header>
 
         <main>
-            <div class="dialogue">
-                <p>Hey! I work here in your creative department. Your CMO and Creative Director are ready to create your next masterpiece!</p>
-                <p>What should they work on?</p>
+            <div class="dialogue" id="dialogue">
+                <!-- This will be filled by JavaScript -->
             </div>
             <div class="container">
                 <img src="{{ url_for('static', filename='assets/creativeteam1.png') }}" alt="Creative Team" class="image">
@@ -185,6 +184,44 @@
         function showLoading() {
             document.getElementById('loading').style.display = 'block';
         }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const dialogues = {
+                1: `<p>Hey! I work here in your creative department. Your CMO and Creative Director are ready to create your next masterpiece!</p>
+                    <p>What should they work on?</p>`,
+                2: `<p>Hey, boss! The creative team. Your CMO and Creative Director are eager to start working on your next project!</p>
+                    <p>What would you like them to focus on?</p>`,
+                3: `<p>Hi there! I'm with the creative department. Your CMO and Creative Director can't wait to get started on your next big idea!</p>
+                    <p>What should they tackle first?</p>`,
+                4: `<p>Greetings! I work in the creative department. Your CMO and Creative Director are ready to bring your vision to life!</p>
+                    <p>What should they begin with?</p>`,
+                5: `<p>Hey! I'm part of your creative team. Your CMO and Creative Director are excited to start on your next masterpiece!</p>
+                    <p>What do you want them to work on?</p>`,
+                6: `<p>Hello! I'm from the creative department. Your CMO and Creative Director are set to create something amazing for you!</p>
+                    <p>What's the first task for them?</p>`,
+                7: `<p>Hi! I work in your creative department. Your CMO and Creative Director are prepared to make your next great idea a reality!</p>
+                    <p>What should they start with?</p>`,
+                8: `<p>Greetings! I'm with the creative team. Your CMO and Creative Director are eager to begin working on your project!</p>
+                    <p>What would you like them to do first?</p>`,
+                9: `<p>Hey! I'm part of your creative department. Your CMO and Creative Director are ready to dive into your next project!</p>
+                    <p>What's their first task?</p>`,
+                10: `<p>Hello! I work here in the creative team. Your CMO and Creative Director are ready to get started on your next creative masterpiece!</p>
+                     <p>What should they focus on?</p>`,
+                11: `<p>Hey there! I'm your creative wizard. Let's make some magic happen together! What should we start with?</p>`,
+                12: `<p>What's up? I'm here to turn your ideas into stunning realities. What's our first project?</p>`,
+                13: `<p>Hello! Your vision, my skills. Let's craft something extraordinary! What should we focus on?</p>`,
+                14: `<p>Hey! Ready to brainstorm with your new creative genius? What should we work on?</p>`,
+                15: `<p>Hi there! I'm your creative sidekick, and we're about to make some brilliance! What should they tackle first?</p>`,
+                16: `<p>Greetings! I'm the creative whiz you've been waiting for. What's our first masterpiece?</p>`,
+                17: `<p>Yo! I'm here to sprinkle some creative pixie dust on your ideas. What should we create?</p>`,
+                18: `<p>Hey! Ready to bring your boldest ideas to life? What's on the agenda?</p>`,
+                19: `<p>Hello! I'm your creative guru, and we're about to embark on an amazing journey. What should we work on first?</p>`,
+                20: `<p>Hi! I'm your innovative partner in crime. Let's make some magic! What should they get started on?</p>`
+            };
+            
+            const randomIndex = Math.floor(Math.random() * 20) + 1;
+            document.getElementById('dialogue').innerHTML = dialogues[randomIndex];
+        });
     </script>
 </body>
 </html>
