@@ -8,18 +8,17 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}">
     
-        <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW2XPR1WW8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KW2XPR1WW8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-KW2XPR1WW8');
-</script>
+      gtag('config', 'G-KW2XPR1WW8');
+    </script>
     
     <style>
-        /* Add this style for the loading screen */
         #loading {
             display: none;
             position: fixed;
@@ -37,7 +36,7 @@
         }
 
         #loading img {
-            max-width: 500px;
+            max-width: 80px;
             margin-bottom: 20px;
         }
 
@@ -136,13 +135,13 @@
         <main>
             <form method="post" onsubmit="showLoading()">
                 <label for="company">Company:</label>
-                <input type="text" id="company" name="company" required>
+                <input type="text" id="company" name="company" placeholder="Tesla" onfocus="this.placeholder=''" onblur="this.placeholder='Tesla'" required>
                 <label for="product">Product:</label>
-                <input type="text" id="product" name="product" required>
+                <input type="text" id="product" name="product" placeholder="Model 3" onfocus="this.placeholder=''" onblur="this.placeholder='Model 3'" required>
                 <label for="industry">Industry:</label>
-                <input type="text" id="industry" name="industry" required>
+                <input type="text" id="industry" name="industry" placeholder="Cars, Electric vehicles" onfocus="this.placeholder=''" onblur="this.placeholder='Cars, Electric vehicles'" required>
                 <label for="adjectives">Adjectives:</label>
-                <input type="text" id="adjectives" name="adjectives" required>
+                <input type="text" id="adjectives" name="adjectives" placeholder="Fast, futuristic, powerful" onfocus="this.placeholder=''" onblur="this.placeholder='Fast, futuristic, powerful'" required>
                 <button type="submit">Generate Taglines</button>
             </form>
         </main>
