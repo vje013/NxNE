@@ -88,7 +88,7 @@
             margin: 10px 0 5px;
         }
 
-        form input {
+        form input, form select {
             margin-bottom: 10px;
             padding: 10px;
             width: calc(100% - 20px);
@@ -144,6 +144,13 @@
                 <input type="text" name="tone" id="tone" placeholder="futuristic, elegant, sci-fi" required>
                 <label for="images">3 Images You Want in the Commercial</label>
                 <input type="text" name="images" id="images" placeholder="Earth in background, dark side of moon, lunar dust" required>
+                <label for="budget">Budget</label>
+                <select name="budget" id="budget" required>
+                    <option value="no_budget">$No Budget</option>
+                    <option value="1-10000">$1 - $10,000</option>
+                    <option value="10000-100000">$10,000 - $100,000</option>
+                    <option value="100000-1000000">$100,000 - $1,000,000</option>
+                </select>
                 <button type="submit" class="primary">Generate Script</button>
             </form>
         </main>
