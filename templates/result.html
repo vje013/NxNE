@@ -73,12 +73,12 @@
                 <div class="inner">
                     <h1>Generated Taglines</h1>
                     <h2 id="dynamic-headline"></h2>
-                    <ul>
+                    <ul id="tagline-list">
                         {% for tagline in taglines.split('\n') %}
                             <li>{{ tagline }}</li>
                         {% endfor %}
                     </ul>
-                    <button class="button" onclick="readAloud()">⏯ (Coming Soon)</button>
+                    <button class="button" onclick="readAloud()">⏯ Read Aloud</button>
                     <div class="actions">
                         <a href="/tagline-generator" class="button">More Tags!</a>
                         <a href="/" class="button">Return to Home</a>
@@ -138,6 +138,32 @@
             const headlineElement = document.getElementById("dynamic-headline");
             headlineElement.textContent = getRandomStatement();
         });
+
+        // Function to read aloud the taglines
+        function readAloud() {
+            const taglines = Array.from(document.querySelectorAll("#tagline-list li")).map(li => li.textContent);
+            const text = taglines.join(' ');
+            
+            fetch('/generate_audio', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ text: text })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.audio_url) {
+                    const audio = new Audio(data.audio_url);
+                    audio.play();
+                } else {
+                    console.error('Failed to generate audio:', data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
     </script>
 </body>
 </html>
