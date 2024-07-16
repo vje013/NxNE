@@ -78,11 +78,7 @@
                             <li>{{ tagline }}</li>
                         {% endfor %}
                     </ul>
-                    <button class="button" onclick="readAloud()">⏯ Play Audio</button>
-                    <audio id="audio" controls style="display:none;">
-                        <source id="audioSource" type="audio/mp3">
-                        Your browser does not support the audio element.
-                    </audio>
+                    <button class="button" onclick="readAloud()">⏯ (Coming Soon)</button>
                     <div class="actions">
                         <a href="/tagline-generator" class="button">More Tags!</a>
                         <a href="/" class="button">Return to Home</a>
@@ -142,25 +138,6 @@
             const headlineElement = document.getElementById("dynamic-headline");
             headlineElement.textContent = getRandomStatement();
         });
-
-        async function readAloud() {
-            const response = await fetch('/generate_audio', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: new URLSearchParams({
-                    'text': `{% for tagline in taglines.split('\n') %}{{ tagline }} {% endfor %}`
-                })
-            });
-            const data = await response.json();
-            const audioElement = document.getElementById('audio');
-            const audioSource = document.getElementById('audioSource');
-            audioSource.src = data.audio_url;
-            audioElement.style.display = 'block';
-            audioElement.load();
-            audioElement.play();
-        }
     </script>
 </body>
 </html>
