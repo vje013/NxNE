@@ -59,10 +59,10 @@
         }
 
         header {
-    text-align: center;
-    padding: -20px 0;
-    margin-bottom: -50px; /* Adjust this value to decrease the distance */
-}
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 10px; /* Adjust this value to decrease the distance */
+        }
 
         nav ul {
             list-style: none;
@@ -84,13 +84,7 @@
 
         main {
             text-align: center;
-            padding: -25px 0; /* Reduce padding to decrease distance */
-        }
-
-        main img {
-            max-width: 80%;
-            height: auto;
-            margin-bottom: -100px; /* Reduce margin to decrease distance */
+            padding: 0 0; /* Reduce padding to decrease distance */
         }
 
         form {
@@ -151,7 +145,6 @@
         </header>
 
         <main>
-            <img src="{{ url_for('static', filename='assets/BrainstormBanner.png') }}" alt="Brainstorm Banner">
             <h5>Why pay McKinsey when you can consult with your own, personal C-suite?</h5>
             <form method="post" onsubmit="showLoading()">
                 <label for="role">Select which executive in your C-suite you wish to consult:</label>
