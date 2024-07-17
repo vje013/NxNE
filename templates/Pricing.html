@@ -6,121 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
     <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" /></noscript>
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KW2XPR1WW8"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-KW2XPR1WW8');
-    </script>
-
     <style>
-        .content-container {
+        body, html {
             display: flex;
             justify-content: center;
             align-items: center;
+            height: 100%;
+            margin: 0;
+            padding: 0;
             text-align: center;
-            height: 25vh;
+            background-color: #f0f0f0;
         }
         .content {
-            max-width: 600px;
-            margin: 0 auto;
+            max-width: 90%;
+            max-height: 90%;
+            margin: auto;
         }
-        .card-container {
-            display: flex;
-            justify-content: space-around;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            margin: 2rem auto;
-            max-width: 1200px;
-        }
-        .card {
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 2rem;
-            margin: 1rem;
-            width: 22%;
-            min-width: 250px;
-            text-align: left;
-        }
-        .card h3 {
-            margin-top: 0;
+        .content img {
+            width: 100%;
+            height: auto;
         }
     </style>
 </head>
-<body class="is-preload">
-    <div id="wrapper">
-        <header id="header">
-            <div class="logo">
-                <span class="icon fa-home"></span>
-            </div>
-            <div class="content">
-                <div class="inner">
-                    <h1>NxNE</h1>
-                    <p>We Empower Founders</p>
-                </div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="{{ url_for('brainstorm') }}">MVP: Brainstorm</a></li>
-                    <li><a href="{{ url_for('marketmagic') }}">MVP: MarketMagic</a></li>
-                    <li><a href="{{ url_for('Coming_Soon') }}">Coming Soon</a></li>
-                </ul>
-            </nav>
-        </header>
-        <div class="content-container">
-            <div class="content">
-                <h4>
-                    Get ready to go North by Northeast. <br>
-                    <b>Scale your business with your own personal C-suite.</b>
-                </h4>
-                <p>
-                    ⇗Try our MVP Features for free above⇗
-                </p>
-            </div>
-        </div>
-        <div class="card-container">
-            <div class="card">
-                <h3>Intern Tier</h3>
-                <h5>$0/month</h5>
-                <p>Tagline Generator</p>
-                <p>Script Generator</p>
-                <p>Brainstorm (5 mins/day)</p>
-            </div>
-            <div class="card">
-                <h3>Manager Tier</h3>
-                <h5>$9.99/month</h5>
-                <h7>Intern Tier + ...</h>
-                <p>Money Minute</p>
-                <p>Lead Generator</p>
-                <p>Brainstorm (10 mins/day)</p>
-            </div>
-            <div class="card">
-                <h3>Executive Tier</h3>
-                <h5>$14.99/month</h5>
-                <h7>Manager Tier + ...</h>
-                <p>Commercial Generator</p>
-                <p>Brainstorm (15 mins/day)</p>
-            </div>
-            <div class="card">
-                <h3>Board Tier</h3>
-                <h5>$29.99/month</h5>
-                <h7>Executive Tier + ...</h>
-                <p>NxNE 360</p>
-                <p>NxNE GitMoney</p>
-                <p>Brainstorm (unlimited)</p>
-            </div>
-        </div>
-        <footer id="footer">
-            <p class="copyright">&copy; NxNE2024@gmail.com</p>
-        </footer>
+<body>
+    <div class="content">
+        <img src="{{ url_for('static', filename='assets/NxNE_pricing.png') }}" alt="NxNE Pricing">
     </div>
-    <div id="bg"></div>
+
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
