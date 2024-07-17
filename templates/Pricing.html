@@ -1,12 +1,12 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>NxNE Home</title>
+    <title>NxNE Pricing</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
     <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" /></noscript>
-    
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KW2XPR1WW8"></script>
     <script>
@@ -16,7 +16,7 @@
 
       gtag('config', 'G-KW2XPR1WW8');
     </script>
-    
+
     <style>
         .content-container {
             display: flex;
@@ -28,6 +28,28 @@
         .content {
             max-width: 600px;
             margin: 0 auto;
+        }
+        .card-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin: 2rem auto;
+            max-width: 1200px;
+        }
+        .card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin: 1rem;
+            width: 22%;
+            min-width: 250px;
+            text-align: left;
+        }
+        .card h3 {
+            margin-top: 0;
         }
     </style>
 </head>
@@ -48,7 +70,6 @@
                     <li><a href="{{ url_for('brainstorm') }}">MVP: Brainstorm</a></li>
                     <li><a href="{{ url_for('marketmagic') }}">MVP: MarketMagic</a></li>
                     <li><a href="{{ url_for('Coming_Soon') }}">Coming Soon</a></li>
-                    <li><a href="{{ url_for('pricing') }}">Pricing</a></li>
                 </ul>
             </nav>
         </header>
@@ -63,14 +84,38 @@
                 </p>
             </div>
         </div>
-                <!-- Viral Loops Embed Form -->
-                <div>
-                    <form-widget ucid='jceTGq7hVsgCfwxuHRWLV0na0pU'></form-widget>
-                </div>
-        
-        <!-- Viral Loops Script -->
-        <script type="text/javascript" src="https://app.viral-loops.com/widgetsV2/core/loader.js" data-campaign-id="jceTGq7hVsgCfwxuHRWLV0na0pU" id="viral-loops-loader"></script>
-        
+        <div class="card-container">
+            <div class="card">
+                <h3>Intern Tier</h3>
+                <h5>$0/month</h5>
+                <p>Tagline Generator</p>
+                <p>Script Generator</p>
+                <p>Brainstorm (5 mins/day)</p>
+            </div>
+            <div class="card">
+                <h3>Manager Tier</h3>
+                <h5>$9.99/month</h5>
+                <h7>Intern Tier + ...</h>
+                <p>Money Minute</p>
+                <p>Lead Generator</p>
+                <p>Brainstorm (10 mins/day)</p>
+            </div>
+            <div class="card">
+                <h3>Executive Tier</h3>
+                <h5>$14.99/month</h5>
+                <h7>Manager Tier + ...</h>
+                <p>Commercial Generator</p>
+                <p>Brainstorm (15 mins/day)</p>
+            </div>
+            <div class="card">
+                <h3>Board Tier</h3>
+                <h5>$29.99/month</h5>
+                <h7>Executive Tier + ...</h>
+                <p>NxNE 360</p>
+                <p>NxNE GitMoney</p>
+                <p>Brainstorm (unlimited)</p>
+            </div>
+        </div>
         <footer id="footer">
             <p class="copyright">&copy; NxNE2024@gmail.com</p>
         </footer>
