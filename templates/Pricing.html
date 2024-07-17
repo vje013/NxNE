@@ -43,9 +43,6 @@
             display: inline;
             margin: 0 10px;
         }
-        header {
-            margin-top: 40px;
-        }
         header ul li a {
             color: #1034a6;
             text-decoration: none;
@@ -53,13 +50,25 @@
     </style>
 </head>
 <body>
-    <header>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="{{ url_for('brainstorm') }}">MVP: Brainstorm</a></li>
-            <li><a href="{{ url_for('marketmagic') }}">MVP: MarketMagic</a></li>
-            <li><a href="{{ url_for('Coming_Soon') }}">Coming Soon</a></li>
-        </ul>
+    <header id="header">
+        <div class="logo">
+            <span class="icon fa-home"></span>
+        </div>
+        <div class="content">
+            <div class="inner">
+                <h1>NxNE</h1>
+                <p>We Empower Founders</p>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="{{ url_for('brainstorm') }}">MVP: Brainstorm</a></li>
+                <li><a href="{{ url_for('marketmagic') }}">MVP: MarketMagic</a></li>
+                <li><a href="{{ url_for('Coming_Soon') }}">Coming Soon</a></li>
+                <li><a href="{{ url_for('waitlist') }}">Waitlist</a></li>
+            </ul>
+        </nav>
     </header>
     <div class="content">
         <img src="{{ url_for('static', filename='assets/NxNE_pricing.png') }}" alt="NxNE Pricing">
