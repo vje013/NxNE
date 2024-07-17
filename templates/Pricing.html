@@ -28,42 +28,42 @@
             width: 100%;
             height: auto;
         }
-        footer {
+        header {
             background-color: transparent;
             color: #1034a6;
             text-align: center;
             padding: 10px 0;
         }
-        footer ul {
+        header ul {
             list-style: none;
             padding: 0;
             margin: 0;
         }
-        footer ul li {
+        header ul li {
             display: inline;
             margin: 0 10px;
         }
-        footer {
-    margin-top: 40px;
-}
-        footer ul li a {
+        header {
+            margin-top: 40px;
+        }
+        header ul li a {
             color: #1034a6;
             text-decoration: none;
         }
     </style>
 </head>
 <body>
-    <div class="content">
-        <img src="{{ url_for('static', filename='assets/NxNE_pricing.png') }}" alt="NxNE Pricing">
-    </div>
-    <footer>
+    <header>
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="{{ url_for('brainstorm') }}">MVP: Brainstorm</a></li>
             <li><a href="{{ url_for('marketmagic') }}">MVP: MarketMagic</a></li>
             <li><a href="{{ url_for('Coming_Soon') }}">Coming Soon</a></li>
         </ul>
-    </footer>
+    </header>
+    <div class="content">
+        <img src="{{ url_for('static', filename='assets/NxNE_pricing.png') }}" alt="NxNE Pricing">
+    </div>
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
