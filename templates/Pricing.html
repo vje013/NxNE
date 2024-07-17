@@ -47,6 +47,12 @@
             color: #1034a6;
             text-decoration: none;
         }
+        .logo-bottom {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
     </style>
 </head>
 <body>
@@ -72,6 +78,7 @@
     <div class="content">
         <img src="{{ url_for('static', filename='assets/NxNE_pricing.png') }}" alt="NxNE Pricing">
     </div>
+    <img src="https://assets.brandfetch.io/idW8JhH8ft.png" alt="Stripe Logo" class="logo-bottom">
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
