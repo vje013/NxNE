@@ -1,9 +1,6 @@
- NxNE
+NxNE
 
- Project Title: NxNE - AI-Powered Business Intelligence and Development Tools
-
- Project Description
-NxNE is a powerful AI-powered platform designed to assist entrepreneurs and small business owners by providing free and easy-to-use business intelligence tools. The platform offers a comprehensive suite of development tools that support business growth by automating processes such as lead generation, financial forecasting, project management, and more.
+North by NorthEast (NxNE) is a powerful AI-powered platform designed to assist entrepreneurs and small business owners by providing free and easy-to-use business intelligence tools. The platform offers a comprehensive suite of development tools that support business growth by automating processes such as lead generation, financial forecasting, project management, and more.
 
 NxNE empowers users by integrating machine learning models and data analytics to help streamline decision-making and optimize operations. It is ideal for founders who lack extensive marketing or sales experience but are looking to establish and grow their businesses in a competitive market.
 
