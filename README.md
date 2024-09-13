@@ -1,6 +1,6 @@
  NxNE
 
-North by NorthEast (NxNE) is a powerful AI-powered platform designed to assist entrepreneurs and small business owners by providing free and easy-to-use business intelligence and automation tools. The platform offers a comprehensive suite of development tools that support business growth by automating processes such as lead generation, financial forecasting, project management, robotic process automation (RPA), and more.
+North by NorthEast (NxNE) is a powerful AI-powered platform designed to assist solo technical founders and small business owners by providing free and easy-to-use business intelligence and automation tools. The platform offers a comprehensive suite of development tools that support business growth by automating processes such as lead generation, financial forecasting, project management, robotic process automation (RPA), and more.
 
 NxNE empowers users by integrating machine learning models, data analytics, and RPA solutions to help streamline decision-making, optimize operations, and automate repetitive tasks. It is ideal for founders who lack extensive marketing, sales, or operational experience but are looking to establish and grow their businesses in a competitive market.
 
