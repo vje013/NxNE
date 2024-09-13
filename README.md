@@ -5,14 +5,16 @@ North by NorthEast (NxNE) is a powerful AI-powered platform designed to assist e
 NxNE empowers users by integrating machine learning models and data analytics to help streamline decision-making and optimize operations. It is ideal for founders who lack extensive marketing or sales experience but are looking to establish and grow their businesses in a competitive market.
 
  Table of Contents
-- [Installation](installation)
-- [Usage](usage)
-- [Features](features)
-- [Technologies](technologies)
-- [Contributing](contributing)
-- [License](license)
+- Installation
+- Usage
+- Features
+- Technologies
+- Contributing
+- License
 
  Installation
+
+
 To run NxNE locally or on your preferred platform, follow these steps:
 
 1. Clone the repository:
@@ -39,6 +41,7 @@ To run NxNE locally or on your preferred platform, follow these steps:
    ```
 
  Usage
+ 
 Once the application is running, users can access the following functionalities:
 1. Lead Generation: NxNE uses AI to identify and generate high-quality sales leads for businesses.
 2. Financial Planning: Utilize the built-in financial forecasting tools for better budgeting and financial decision-making.
@@ -51,6 +54,7 @@ Example:
 3. Upload relevant data (e.g., client list) and let NxNE generate actionable insights.
 
  Features
+ 
 - Automated Lead Generation: NxNE leverages AI to scrape data and produce high-priority leads.
 - Financial Forecasting: Machine learning models project future financial outcomes based on historical data.
 - Project Management Tools: Track tasks, deadlines, and milestones with ease.
@@ -58,6 +62,7 @@ Example:
 - AI-Powered Custom Reports: Receive custom business intelligence reports based on company metrics and growth patterns.
 
  Technologies
+ 
 NxNE is built using the following technologies:
 - Python: Backend services and AI/ML processing
 - Flask: Web framework for serving NxNE’s UI and API
@@ -66,6 +71,7 @@ NxNE is built using the following technologies:
 - GitHub: Version control and collaboration
 
  Contributing
+ 
 We welcome contributions from the community! To contribute to NxNE, follow these steps:
 
 1. Fork the repository.
